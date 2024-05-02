@@ -59,6 +59,7 @@ int main() {
 		case 3:
 			return 0;
 			break;
+
 		}
 		system("cls");
 	} while (decyzja <= 0 || decyzja > 3);
