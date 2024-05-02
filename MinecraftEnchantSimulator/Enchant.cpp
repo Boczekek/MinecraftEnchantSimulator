@@ -36,7 +36,7 @@ void menuGlowne() {
 	std::cout << std::endl;
 	std::cout << "1 - NOWA GRA" << std::endl;
 	std::cout << "2 - WCZYTAJ ZAPIS" << std::endl;
-	std::cout << "3 - WYJŚCIERR" << std::endl;
+	std::cout << "3 - WYJŚCIE" << std::endl;
 }
 
 int main() {
