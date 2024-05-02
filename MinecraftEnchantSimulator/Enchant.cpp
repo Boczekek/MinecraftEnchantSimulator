@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <cmath>
 
 class Gracz {
 private:
@@ -32,10 +33,12 @@ public:
 
 	void lvlChange() {						//Przeliczanie exp na lvl
 		if (exp >= (lvl + 2) * 7 / 2) {
+			exp -= ((lvl + 2) * 7 / 2);
 			lvl++;
 		}
-		if (exp < (lvl + 2) * 7 / 2) {
+		if (exp < 0) {
 			lvl--;
+			exp = ((lvl + 2) * 7 / 2) - abs(exp);
 		}
 	}
 };
