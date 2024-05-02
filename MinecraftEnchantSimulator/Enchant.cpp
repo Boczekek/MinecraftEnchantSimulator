@@ -18,8 +18,25 @@ public:
 		this->exp += exp;
 	}
 
+	int getExp(void) {						//Getter expa
+		return exp;
+	}
+
 	void addWaluta(int waluta) {			//Metoda dodająca walutę
 		this->waluta += waluta;
+	}
+
+	int getWaluta(void) {					//Getter waluty
+		return waluta;
+	}
+
+	void lvlChange() {						//Przeliczanie exp na lvl
+		if (exp >= (lvl + 2) * 7 / 2) {
+			lvl++;
+		}
+		if (exp < (lvl + 2) * 7 / 2) {
+			lvl--;
+		}
 	}
 };
 
