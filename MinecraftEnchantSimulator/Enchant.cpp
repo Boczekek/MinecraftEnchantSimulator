@@ -1,6 +1,11 @@
 ﻿#include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <cmath>
+
+class Przedmioty {
+
+};
 
 class Gracz {
 private:
@@ -18,85 +23,137 @@ public:
 		this->exp += exp;
 	}
 
+	int getExp(void) {						//Getter expa
+		return exp;
+	}
+
 	void addWaluta(int waluta) {			//Metoda dodająca walutę
 		this->waluta += waluta;
 	}
+
+	int getWaluta(void) {					//Getter waluty
+		return waluta;
+	}
+
+	void lvlChange() {						//Przeliczanie exp na lvl
+		if (exp >= (lvl + 2) * 7 / 2) {
+			exp -= ((lvl + 2) * 7 / 2);
+			lvl++;
+		}
+		if (exp < 0) {
+			lvl--;
+			exp = ((lvl + 2) * 7 / 2) - abs(exp);
+		}
+	}
 };
 
-void menuGlowne() {
-	std::cout << "\t$$\\      $$\\ $$$$$$\\ $$\\   $$\\ $$$$$$$$\\  $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$$\\ $$$$$$$$\\ " << std::endl;
-	std::cout << "\t$$$\\    $$$ |\\_$$  _|$$$\\  $$ |$$  _____|$$  __$$\\ $$  __$$\\ $$  __$$\\ $$  _____|\\__$$  __|" << std::endl;
-	std::cout << "\t$$$$\\  $$$$ |  $$ |  $$$$\\ $$ |$$ |      $$ /  \\__|$$ |  $$ |$$ /  $$ |$$ |         $$ |   " << std::endl;
-	std::cout << "\t$$\\$$\\$$ $$ |  $$ |  $$ $$\\$$ |$$$$$\\    $$ |      $$$$$$$  |$$$$$$$$ |$$$$$\\       $$ |   " << std::endl;
-	std::cout << "\t$$ \\$$$  $$ |  $$ |  $$ \\$$$$ |$$  __|   $$ |      $$  __$$< $$  __$$ |$$  __|      $$ |   " << std::endl;
-	std::cout << "\t$$ |\\$  /$$ |  $$ |  $$ |\\$$$ |$$ |      $$ |  $$\\ $$ |  $$ |$$ |  $$ |$$ |         $$ |   " << std::endl;
-	std::cout << "\t$$ | \\_/ $$ |$$$$$$\\ $$ | \\$$ |$$$$$$$$\\ \\$$$$$$  |$$ |  $$ |$$ |  $$ |$$ |         $$ |   " << std::endl;
-	std::cout << "\t\\__|     \\__|\\______|\\__|  \\__|\\________| \\______/ \\__|  \\__|\\__|  \\__|\\__|         \\__|   " << std::endl;
-	std::cout << std::endl;
-	std::cout << "\t      ___       __                 ___     __                         ___  __   __  " << std::endl;
-	std::cout << "\t     |__  |\\ | /  ` |__|  /\\  |\\ |  |     /__` |  |\\/| |  | |     /\\   |  /  \\ |__) " << std::endl;
-	std::cout << "\t     |___ | \\| \\__, |  | /~~\\ | \\|  |     .__/ |  |  | \\__/ |___ /~~\\  |  \\__/ |  \\ " << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << "1 - NOWA GRA" << std::endl;
-	std::cout << "2 - WCZYTAJ ZAPIS" << std::endl;
-	std::cout << "3 - WYJSCIE" << std::endl;
-	std::cout << std::endl;
-}
+class Mobek : public Przedmioty {
+public:
+	int hp = 0;
+	int exp = 0;
 
-int main() {
-	short decyzja;
-	do {
-		menuGlowne();
-		std::cout << "?>:";
-		std::cin >> decyzja;
-		switch (decyzja) {
-		case 1:
-			break;
-		case 2:
-			break;
-		case 3:
-			return 0;
-			break;
-		}
-		system("cls");
-	} while (decyzja <= 0 || decyzja > 3);
-	
-	return 0;
-}
+	void setterHp(int hp) {
+		this->hp = hp;
+	};
+	int getterHp(void) {
+		return hp;
+	};
+};
 
-/*
-Giga plan na Minecraft Enchant Simulator
+class Zombie : public Mobek {
+public:
+	int hp = 20;
+	int exp = 1;
+};
 
-Ogólne założenie:
-Gra typu tycoon z nieskończoną progresją.
+class Skeleton : public Mobek {
+	int hp = 20;
+	int exp = 1;
+};
 
-Menu:
-- Menu główne z opcją rozpoczęcia nowej gry, wczytania zapisu i wyjścia z gry.
-- Menu w grze, w którym jest do wyboru: expiarka, enchantowanie, sklep, ekwipunek oraz są wyświetlane informacje o graczu.
+class Spider : public Mobek {
+	int hp = 16;
+	int exp = 1;
+};
 
-Expiarka i moby:
-- W expiarce losuje ci mobka (do ustalenia których mobów dodamy, byle wszystkie enchanty miały sens np. pogromca nieumarłych, zmora stawonogów itd.).
-- Statystyki mobów są takie same jak w mc i każdy mob ma szanse na dropnięcie jakiegoś przedmiotu.
-- Gracz może zaatakować mobka ale odwrotnie już nie, tak jak w typowej expiarce w mc.
+class Creeper : public Mobek {
+	int hp = 20;
+	int exp = 1;
 
-Sklep:
-- Gra zaczyna się bez żadnej broni więc trzeba łapką ubić paru mobków, wymienić w sklepie zdobyte itemy na np. emeraldy i za te emeraldy kupić pierwszy drewniany mieczyk, który można już enchantować.
-- Każdy przedmiot(zdobyty w expiarce) ma inną wartość w zależności od szansy na wydropienie.
-- W sklepie oprócz sprzedawania itemów i kupowania broni, są ulepszenia stołu od enchantu i jakieś ulepszenia do expiarki (np. podniesienie poziomu przeciwników żeby dawali więcej expa).
-- Naprawa broni (?jeśli dodamy wytrzymałość?).
+	void menuGlowne() {
+		std::cout << "\t$$\\      $$\\ $$$$$$\\ $$\\   $$\\ $$$$$$$$\\  $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$$\\ $$$$$$$$\\ " << std::endl;
+		std::cout << "\t$$$\\    $$$ |\\_$$  _|$$$\\  $$ |$$  _____|$$  __$$\\ $$  __$$\\ $$  __$$\\ $$  _____|\\__$$  __|" << std::endl;
+		std::cout << "\t$$$$\\  $$$$ |  $$ |  $$$$\\ $$ |$$ |      $$ /  \\__|$$ |  $$ |$$ /  $$ |$$ |         $$ |   " << std::endl;
+		std::cout << "\t$$\\$$\\$$ $$ |  $$ |  $$ $$\\$$ |$$$$$\\    $$ |      $$$$$$$  |$$$$$$$$ |$$$$$\\       $$ |   " << std::endl;
+		std::cout << "\t$$ \\$$$  $$ |  $$ |  $$ \\$$$$ |$$  __|   $$ |      $$  __$$< $$  __$$ |$$  __|      $$ |   " << std::endl;
+		std::cout << "\t$$ |\\$  /$$ |  $$ |  $$ |\\$$$ |$$ |      $$ |  $$\\ $$ |  $$ |$$ |  $$ |$$ |         $$ |   " << std::endl;
+		std::cout << "\t$$ | \\_/ $$ |$$$$$$\\ $$ | \\$$ |$$$$$$$$\\ \\$$$$$$  |$$ |  $$ |$$ |  $$ |$$ |         $$ |   " << std::endl;
+		std::cout << "\t\\__|     \\__|\\______|\\__|  \\__|\\________| \\______/ \\__|  \\__|\\__|  \\__|\\__|         \\__|   " << std::endl;
+		std::cout << std::endl;
+		std::cout << "\t      ___       __                 ___     __                         ___  __   __  " << std::endl;
+		std::cout << "\t     |__  |\\ | /  ` |__|  /\\  |\\ |  |     /__` |  |\\/| |  | |     /\\   |  /  \\ |__) " << std::endl;
+		std::cout << "\t     |___ | \\| \\__, |  | /~~\\ | \\|  |     .__/ |  |  | \\__/ |___ /~~\\  |  \\__/ |  \\ " << std::endl;
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << "1 - NOWA GRA" << std::endl;
+		std::cout << "2 - WCZYTAJ ZAPIS" << std::endl;
+		std::cout << "3 - WYJSCIE" << std::endl;
+		std::cout << std::endl;
+	}
 
-Enchantowanie:
-- System levelowania i wydawania leveli podobny jak w mc.
-- Trzeba obmyśleć które enchanty dodajemy a które nie, tak żeby każdy enchant miał zastosowanie.
-- Maksymalny poziom wylosowanego enchantu zależny od poziomu stołu do enchantowania. (nieskończona progresja)
-- Samo enchantowanie działa podobnie jak w mc ale bez lazurytu.
-- Po zenchantowaniu broni mamy wybór czy dać ją do ekwipunku czy wyrzucić.
+	int main() {
+		short decyzja;
+		do {
+			menuGlowne();
+			std::cout << "?>:";
+			std::cin >> decyzja;
+			switch (decyzja) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				return 0;
+				break;
+			}
+			system("cls");
+		} while (decyzja <= 0 || decyzja > 3);
 
-Ekwipunek:
-- Wyświetla posiadane bronie.
-- Możliwość wybrania jednej broni w celu wyświetlenia jej statystyk, wyposażenia jej lub wyrzucenia.
-- Wyświetla ilość posiadanych sprzedawalnych przedmiotów oraz waluty(emeraldów).
-- Fajnie jakby z tymi sprzedawalnymi przedmiotami dało się coś więcej robić bo jak nie to można zrobić tak żeby moby dropiły od razu emeraldy. 
-*/
+		return 0;
+	}
+
+	/*
+	Giga plan na Minecraft Enchant Simulator
+
+	Ogólne założenie:
+	Gra typu tycoon z nieskończoną progresją.
+
+	Menu:
+	- Menu główne z opcją rozpoczęcia nowej gry, wczytania zapisu i wyjścia z gry.
+	- Menu w grze, w którym jest do wyboru: expiarka, enchantowanie, sklep, ekwipunek oraz są wyświetlane informacje o graczu.
+
+	Expiarka i moby:
+	- W expiarce losuje ci mobka (do ustalenia których mobów dodamy, byle wszystkie enchanty miały sens np. pogromca nieumarłych, zmora stawonogów itd.).
+	- Statystyki mobów są takie same jak w mc i każdy mob ma szanse na dropnięcie jakiegoś przedmiotu.
+	- Gracz może zaatakować mobka ale odwrotnie już nie, tak jak w typowej expiarce w mc.
+
+	Sklep:
+	- Gra zaczyna się bez żadnej broni więc trzeba łapką ubić paru mobków, wymienić w sklepie zdobyte itemy na np. emeraldy i za te emeraldy kupić pierwszy drewniany mieczyk, który można już enchantować.
+	- Każdy przedmiot(zdobyty w expiarce) ma inną wartość w zależności od szansy na wydropienie.
+	- W sklepie oprócz sprzedawania itemów i kupowania broni, są ulepszenia stołu od enchantu i jakieś ulepszenia do expiarki (np. podniesienie poziomu przeciwników żeby dawali więcej expa).
+	- Naprawa broni (?jeśli dodamy wytrzymałość?).
+
+	Enchantowanie:
+	- System levelowania i wydawania leveli podobny jak w mc.
+	- Trzeba obmyśleć które enchanty dodajemy a które nie, tak żeby każdy enchant miał zastosowanie.
+	- Maksymalny poziom wylosowanego enchantu zależny od poziomu stołu do enchantowania. (nieskończona progresja)
+	- Samo enchantowanie działa podobnie jak w mc ale bez lazurytu.
+	- Po zenchantowaniu broni mamy wybór czy dać ją do ekwipunku czy wyrzucić.
+
+	Ekwipunek:
+	- Wyświetla posiadane bronie.
+	- Możliwość wybrania jednej broni w celu wyświetlenia jej statystyk, wyposażenia jej lub wyrzucenia.
+	- Wyświetla ilość posiadanych sprzedawalnych przedmiotów oraz waluty(emeraldów).
+	- Fajnie jakby z tymi sprzedawalnymi przedmiotami dało się coś więcej robić bo jak nie to można zrobić tak żeby moby dropiły od razu emeraldy.
+	*/
