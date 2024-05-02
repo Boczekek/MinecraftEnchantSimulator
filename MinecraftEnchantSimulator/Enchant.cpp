@@ -2,6 +2,10 @@
 #include <string>
 #include <stdlib.h>
 
+class Przedmioty {
+
+};
+
 class Gracz {
 private:
 	std::string nazwa_gracza = "";
@@ -21,6 +25,40 @@ public:
 	void addWaluta(int waluta) {			//Metoda dodająca walutę
 		this->waluta += waluta;
 	}
+
+};
+
+class Mobek : public Przedmioty {
+public:
+	int hp = 0;
+	int exp = 0;
+
+	void setterHp(int hp) {
+		this->hp = hp;
+	};
+	int getterHp(void) {
+		return hp;
+	};
+};
+
+class Zombie : public Mobek {
+public:
+	int hp = 20;
+	int exp = 1;
+};
+class Skeleton : public Mobek {
+	int hp = 20;
+	int exp = 1;
+};
+
+class Spider : public Mobek {
+	int hp = 16;
+	int exp = 1;
+};
+
+class Creeper : public Mobek {
+	int hp = 20;
+	int exp = 1;
 };
 
 void menuGlowne() {
