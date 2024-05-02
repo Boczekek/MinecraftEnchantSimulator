@@ -4,7 +4,9 @@
 #include <cmath>
 
 class Przedmioty {
+
 };
+
 class Gracz {
 private:
 	std::string nazwa_gracza = "";
@@ -77,6 +79,7 @@ class Spider : public Mobek {
 class Creeper : public Mobek {
 	int hp = 20;
 	int exp = 1;
+};
 
 	void menuGlowne() {
 		std::cout << "\t$$\\      $$\\ $$$$$$\\ $$\\   $$\\ $$$$$$$$\\  $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$$\\ $$$$$$$$\\ " << std::endl;
