@@ -4,9 +4,7 @@
 #include <cmath>
 
 class Przedmioty {
-
 };
-
 class Gracz {
 private:
 	std::string nazwa_gracza = "";
