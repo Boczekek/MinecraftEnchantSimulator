@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <cmath>
 
 class Gracz {
 private:
@@ -18,8 +19,27 @@ public:
 		this->exp += exp;
 	}
 
+	int getExp(void) {						//Getter expa
+		return exp;
+	}
+
 	void addWaluta(int waluta) {			//Metoda dodająca walutę
 		this->waluta += waluta;
+	}
+
+	int getWaluta(void) {					//Getter waluty
+		return waluta;
+	}
+
+	void lvlChange() {						//Przeliczanie exp na lvl
+		if (exp >= (lvl + 2) * 7 / 2) {
+			exp -= ((lvl + 2) * 7 / 2);
+			lvl++;
+		}
+		if (exp < 0) {
+			lvl--;
+			exp = ((lvl + 2) * 7 / 2) - abs(exp);
+		}
 	}
 };
 
