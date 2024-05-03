@@ -1,16 +1,16 @@
 ﻿#include <iostream>
-#include <string>
 #include <stdlib.h>
+#include <locale.h>
 #include <cmath>
+#include <string>
 
 class Przedmioty {
 
 };
 
 class Gracz {
-private:
-	std::string nazwa_gracza = "";
 public:
+	std::string nazwa_gracza = "";
 	int exp = 0;
 	int lvl = 0;
 	int waluta = 0;
@@ -82,6 +82,8 @@ class Creeper : public Mobek {
 };
 
 	void menuGlowne() {
+		system("cls");
+		std::cout << std::endl;
 		std::cout << "\t$$\\      $$\\ $$$$$$\\ $$\\   $$\\ $$$$$$$$\\  $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$$\\ $$$$$$$$\\ " << std::endl;
 		std::cout << "\t$$$\\    $$$ |\\_$$  _|$$$\\  $$ |$$  _____|$$  __$$\\ $$  __$$\\ $$  __$$\\ $$  _____|\\__$$  __|" << std::endl;
 		std::cout << "\t$$$$\\  $$$$ |  $$ |  $$$$\\ $$ |$$ |      $$ /  \\__|$$ |  $$ |$$ /  $$ |$$ |         $$ |   " << std::endl;
@@ -96,30 +98,61 @@ class Creeper : public Mobek {
 		std::cout << "\t     |___ | \\| \\__, |  | /~~\\ | \\|  |     .__/ |  |  | \\__/ |___ /~~\\  |  \\__/ |  \\ " << std::endl;
 		std::cout << std::endl;
 		std::cout << std::endl;
+		std::cout << "-------------------------------------" << std::endl;
 		std::cout << std::endl;
 		std::cout << "1 - NOWA GRA" << std::endl;
 		std::cout << "2 - WCZYTAJ ZAPIS" << std::endl;
-		std::cout << "3 - WYJSCIE" << std::endl;
+		std::cout << "3 - WYJŚCIE" << std::endl;
+		std::cout << std::endl;
+		std::cout << "-------------------------------------" << std::endl;
 		std::cout << std::endl;
 	}
 
+	void menuGry(std::string nazwa, int poziom, int szmaragdy) {
+		system("cls");
+		Gracz gracz("gracz1");
+		std::cout << std::endl;
+		std::cout << "\t[ Co chcesz zrobić? ]" << std::endl;
+		std::cout << std::endl;
+		std::cout << "-------------------------------------" << std::endl;
+		std::cout << std::endl;
+		std::cout << "1 - Idź do expaiarki" << std::endl;
+		std::cout << "2 - Idź do sklepu" << std::endl;
+		std::cout << "3 - Enchantuj broń" << std::endl;
+		std::cout << "4 - Organizuj ekwipunek" << std::endl;
+		std::cout << "5 - Wróć do menu głównego" << std::endl;
+		std::cout << std::endl;
+		std::cout << "-------------------------------------" << std::endl;
+		std::cout << std::endl;
+		std::cout << nazwa << ":" << std::endl;
+		std::cout << "Poziom: " << poziom << " | Szmaragdy: " << szmaragdy << std::endl;
+	}
+
+	void wczytajDane() {}
+
 	int main() {
-		short decyzja;
+		setlocale(LC_ALL, "polish");
+		std::string decyzja;
 		do {
 			menuGlowne();
-			std::cout << "?>:";
+			std::cout << ">";
 			std::cin >> decyzja;
-			switch (decyzja) {
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
-				return 0;
-				break;
+			if (decyzja == "1") {
+				Gracz gracz("gracz1");
+				menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
 			}
-			system("cls");
-		} while (decyzja <= 0 || decyzja > 3);
+			else if (decyzja == "2") {
+				Gracz gracz("gracz1");
+				menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
+				wczytajDane();
+			}
+			else if (decyzja == "3") {
+				return 0;
+			}
+			else {
+				decyzja = "0";
+			}
+		} while (decyzja == "0");
 
 		return 0;
 	}
