@@ -21,6 +21,12 @@
   <ItemGroup>
     <ClCompile Include="Enchant.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Gracz.h" />
+    <ClInclude Include="Moby.h" />
+    <ClInclude Include="Przedmioty.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
