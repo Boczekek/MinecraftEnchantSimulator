@@ -81,113 +81,144 @@ class Creeper : public Mobek {
 	int exp = 1;
 };
 
-	void menuGlowne() {
-		system("cls");
-		std::cout << std::endl;
-		std::cout << "\t$$\\      $$\\ $$$$$$\\ $$\\   $$\\ $$$$$$$$\\  $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$$\\ $$$$$$$$\\ " << std::endl;
-		std::cout << "\t$$$\\    $$$ |\\_$$  _|$$$\\  $$ |$$  _____|$$  __$$\\ $$  __$$\\ $$  __$$\\ $$  _____|\\__$$  __|" << std::endl;
-		std::cout << "\t$$$$\\  $$$$ |  $$ |  $$$$\\ $$ |$$ |      $$ /  \\__|$$ |  $$ |$$ /  $$ |$$ |         $$ |   " << std::endl;
-		std::cout << "\t$$\\$$\\$$ $$ |  $$ |  $$ $$\\$$ |$$$$$\\    $$ |      $$$$$$$  |$$$$$$$$ |$$$$$\\       $$ |   " << std::endl;
-		std::cout << "\t$$ \\$$$  $$ |  $$ |  $$ \\$$$$ |$$  __|   $$ |      $$  __$$< $$  __$$ |$$  __|      $$ |   " << std::endl;
-		std::cout << "\t$$ |\\$  /$$ |  $$ |  $$ |\\$$$ |$$ |      $$ |  $$\\ $$ |  $$ |$$ |  $$ |$$ |         $$ |   " << std::endl;
-		std::cout << "\t$$ | \\_/ $$ |$$$$$$\\ $$ | \\$$ |$$$$$$$$\\ \\$$$$$$  |$$ |  $$ |$$ |  $$ |$$ |         $$ |   " << std::endl;
-		std::cout << "\t\\__|     \\__|\\______|\\__|  \\__|\\________| \\______/ \\__|  \\__|\\__|  \\__|\\__|         \\__|   " << std::endl;
-		std::cout << std::endl;
-		std::cout << "\t      ___       __                 ___     __                         ___  __   __  " << std::endl;
-		std::cout << "\t     |__  |\\ | /  ` |__|  /\\  |\\ |  |     /__` |  |\\/| |  | |     /\\   |  /  \\ |__) " << std::endl;
-		std::cout << "\t     |___ | \\| \\__, |  | /~~\\ | \\|  |     .__/ |  |  | \\__/ |___ /~~\\  |  \\__/ |  \\ " << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << "-------------------------------------" << std::endl;
-		std::cout << std::endl;
-		std::cout << "1 - NOWA GRA" << std::endl;
-		std::cout << "2 - WCZYTAJ ZAPIS" << std::endl;
-		std::cout << "3 - WYJŚCIE" << std::endl;
-		std::cout << std::endl;
-		std::cout << "-------------------------------------" << std::endl;
-		std::cout << std::endl;
-	}
+void menuGlowne() {
+	system("cls");
+	std::cout << std::endl;
+	std::cout << "\t$$\\      $$\\ $$$$$$\\ $$\\   $$\\ $$$$$$$$\\  $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$$\\ $$$$$$$$\\ " << std::endl;
+	std::cout << "\t$$$\\    $$$ |\\_$$  _|$$$\\  $$ |$$  _____|$$  __$$\\ $$  __$$\\ $$  __$$\\ $$  _____|\\__$$  __|" << std::endl;
+	std::cout << "\t$$$$\\  $$$$ |  $$ |  $$$$\\ $$ |$$ |      $$ /  \\__|$$ |  $$ |$$ /  $$ |$$ |         $$ |   " << std::endl;
+	std::cout << "\t$$\\$$\\$$ $$ |  $$ |  $$ $$\\$$ |$$$$$\\    $$ |      $$$$$$$  |$$$$$$$$ |$$$$$\\       $$ |   " << std::endl;
+	std::cout << "\t$$ \\$$$  $$ |  $$ |  $$ \\$$$$ |$$  __|   $$ |      $$  __$$< $$  __$$ |$$  __|      $$ |   " << std::endl;
+	std::cout << "\t$$ |\\$  /$$ |  $$ |  $$ |\\$$$ |$$ |      $$ |  $$\\ $$ |  $$ |$$ |  $$ |$$ |         $$ |   " << std::endl;
+	std::cout << "\t$$ | \\_/ $$ |$$$$$$\\ $$ | \\$$ |$$$$$$$$\\ \\$$$$$$  |$$ |  $$ |$$ |  $$ |$$ |         $$ |   " << std::endl;
+	std::cout << "\t\\__|     \\__|\\______|\\__|  \\__|\\________| \\______/ \\__|  \\__|\\__|  \\__|\\__|         \\__|   " << std::endl;
+	std::cout << std::endl;
+	std::cout << "\t      ___       __                 ___     __                         ___  __   __  " << std::endl;
+	std::cout << "\t     |__  |\\ | /  ` |__|  /\\  |\\ |  |     /__` |  |\\/| |  | |     /\\   |  /  \\ |__) " << std::endl;
+	std::cout << "\t     |___ | \\| \\__, |  | /~~\\ | \\|  |     .__/ |  |  | \\__/ |___ /~~\\  |  \\__/ |  \\ " << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "1 - NOWA GRA" << std::endl;
+	std::cout << "2 - WCZYTAJ ZAPIS" << std::endl;
+	std::cout << "3 - WYJŚCIE" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+}
 
-	void menuGry(std::string nazwa, int poziom, int szmaragdy) {
-		system("cls");
-		Gracz gracz("gracz1");
-		std::cout << std::endl;
-		std::cout << "\t[ Co chcesz zrobić? ]" << std::endl;
-		std::cout << std::endl;
-		std::cout << "-------------------------------------" << std::endl;
-		std::cout << std::endl;
-		std::cout << "1 - Idź do expaiarki" << std::endl;
-		std::cout << "2 - Idź do sklepu" << std::endl;
-		std::cout << "3 - Enchantuj broń" << std::endl;
-		std::cout << "4 - Organizuj ekwipunek" << std::endl;
-		std::cout << "5 - Wróć do menu głównego" << std::endl;
-		std::cout << std::endl;
-		std::cout << "-------------------------------------" << std::endl;
-		std::cout << std::endl;
-		std::cout << nazwa << ":" << std::endl;
-		std::cout << "Poziom: " << poziom << " | Szmaragdy: " << szmaragdy << std::endl;
-	}
+void menuGry(std::string nazwa, int poziom, int szmaragdy) {
+	system("cls");
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << nazwa << std::endl;
+	std::cout << "Poziom: " << poziom << " | Szmaragdy: " << szmaragdy << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "\t[ Co chcesz zrobić? ]" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "1 - Idź do expaiarki" << std::endl;
+	std::cout << "2 - Idź do sklepu" << std::endl;
+	std::cout << "3 - Enchantuj broń" << std::endl;
+	std::cout << "4 - Organizuj ekwipunek" << std::endl;
+	std::cout << "5 - Wróć do menu głównego" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+}
 
-	void wczytajDane() {}
+std::string podajNazwe() {
+	system("cls");
+	std::string nazwa;
+	std::cout << std::endl;
+	std::cout << "Podaj nazwę gracza!" << std::endl;
+	std::cout << std::endl;
+	std::cout << ">";
+	std::cin >> nazwa;
+	return nazwa;
+}
 
-	int main() {
-		setlocale(LC_ALL, "polish");
-		std::string decyzja;
-		do {
-			menuGlowne();
-			std::cout << ">";
-			std::cin >> decyzja;
-			if (decyzja == "1") {
-				Gracz gracz("gracz1");
-				menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
-			}
-			else if (decyzja == "2") {
-				Gracz gracz("gracz1");
-				menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
-				wczytajDane();
-			}
-			else if (decyzja == "3") {
-				return 0;
-			}
-			else {
-				decyzja = "0";
-			}
-		} while (decyzja == "0");
+void wczytajDane() {}
 
-		return 0;
-	}
+int main() {
+	setlocale(LC_ALL, "polish");
+	Gracz gracz("Bezimienny");
+	std::string decyzja;
+	do {
+		menuGlowne();
+		std::cout << ">";
+		std::cin >> decyzja;
+		if (decyzja == "1") {
+			gracz.nazwa_gracza=(podajNazwe());
+		}
+		else if (decyzja == "2") {
+			wczytajDane();
+		}
+		else if (decyzja == "3") {
+			return 0;
+		}
+		else {
+			decyzja = "0";
+		}
+	} while (decyzja == "0");
 
-	/*
-	Giga plan na Minecraft Enchant Simulator
+	do {
+		menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
+		std::cout << ">";
+		std::cin >> decyzja;
+		if (decyzja == "1") {
+		}
+		else if (decyzja == "2") {
+		}
+		else if (decyzja == "3") {
+		}
+		else if (decyzja == "4") {
+		}
+		else if (decyzja == "5") {
+			main();
+		}
+		else {
+			decyzja = "0";
+		}
+	} while (decyzja == "0");
 
-	Ogólne założenie:
-	Gra typu tycoon z nieskończoną progresją.
+	return 0;
+}
 
-	Menu:
-	- Menu główne z opcją rozpoczęcia nowej gry, wczytania zapisu i wyjścia z gry.
-	- Menu w grze, w którym jest do wyboru: expiarka, enchantowanie, sklep, ekwipunek oraz są wyświetlane informacje o graczu.
+/*
+Giga plan na Minecraft Enchant Simulator
 
-	Expiarka i moby:
-	- W expiarce losuje ci mobka (do ustalenia których mobów dodamy, byle wszystkie enchanty miały sens np. pogromca nieumarłych, zmora stawonogów itd.).
-	- Statystyki mobów są takie same jak w mc i każdy mob ma szanse na dropnięcie jakiegoś przedmiotu.
-	- Gracz może zaatakować mobka ale odwrotnie już nie, tak jak w typowej expiarce w mc.
+Ogólne założenie:
+Gra typu tycoon z nieskończoną progresją.
 
-	Sklep:
-	- Gra zaczyna się bez żadnej broni więc trzeba łapką ubić paru mobków, wymienić w sklepie zdobyte itemy na np. emeraldy i za te emeraldy kupić pierwszy drewniany mieczyk, który można już enchantować.
-	- Każdy przedmiot(zdobyty w expiarce) ma inną wartość w zależności od szansy na wydropienie.
-	- W sklepie oprócz sprzedawania itemów i kupowania broni, są ulepszenia stołu od enchantu i jakieś ulepszenia do expiarki (np. podniesienie poziomu przeciwników żeby dawali więcej expa).
-	- Naprawa broni (?jeśli dodamy wytrzymałość?).
+Menu:
+- Menu główne z opcją rozpoczęcia nowej gry, wczytania zapisu i wyjścia z gry.
+- Menu w grze, w którym jest do wyboru: expiarka, enchantowanie, sklep, ekwipunek oraz są wyświetlane informacje o graczu.
 
-	Enchantowanie:
-	- System levelowania i wydawania leveli podobny jak w mc.
-	- Trzeba obmyśleć które enchanty dodajemy a które nie, tak żeby każdy enchant miał zastosowanie.
-	- Maksymalny poziom wylosowanego enchantu zależny od poziomu stołu do enchantowania. (nieskończona progresja)
-	- Samo enchantowanie działa podobnie jak w mc ale bez lazurytu.
-	- Po zenchantowaniu broni mamy wybór czy dać ją do ekwipunku czy wyrzucić.
+Expiarka i moby:
+- W expiarce losuje ci mobka (do ustalenia których mobów dodamy, byle wszystkie enchanty miały sens np. pogromca nieumarłych, zmora stawonogów itd.).
+- Statystyki mobów są takie same jak w mc i każdy mob ma szanse na dropnięcie jakiegoś przedmiotu.
+- Gracz może zaatakować mobka ale odwrotnie już nie, tak jak w typowej expiarce w mc.
 
-	Ekwipunek:
-	- Wyświetla posiadane bronie.
-	- Możliwość wybrania jednej broni w celu wyświetlenia jej statystyk, wyposażenia jej lub wyrzucenia.
-	- Wyświetla ilość posiadanych sprzedawalnych przedmiotów oraz waluty(emeraldów).
-	- Fajnie jakby z tymi sprzedawalnymi przedmiotami dało się coś więcej robić bo jak nie to można zrobić tak żeby moby dropiły od razu emeraldy.
-	*/
+Sklep:
+- Gra zaczyna się bez żadnej broni więc trzeba łapką ubić paru mobków, wymienić w sklepie zdobyte itemy na np. emeraldy i za te emeraldy kupić pierwszy drewniany mieczyk, który można już enchantować.
+- Każdy przedmiot(zdobyty w expiarce) ma inną wartość w zależności od szansy na wydropienie.
+- W sklepie oprócz sprzedawania itemów i kupowania broni, są ulepszenia stołu od enchantu i jakieś ulepszenia do expiarki (np. podniesienie poziomu przeciwników żeby dawali więcej expa).
+- Naprawa broni (?jeśli dodamy wytrzymałość?).
+
+Enchantowanie:
+- System levelowania i wydawania leveli podobny jak w mc.
+- Trzeba obmyśleć które enchanty dodajemy a które nie, tak żeby każdy enchant miał zastosowanie.
+- Maksymalny poziom wylosowanego enchantu zależny od poziomu stołu do enchantowania. (nieskończona progresja)
+- Samo enchantowanie działa podobnie jak w mc ale bez lazurytu.
+- Po zenchantowaniu broni mamy wybór czy dać ją do ekwipunku czy wyrzucić.
+
+Ekwipunek:
+- Wyświetla posiadane bronie.
+- Możliwość wybrania jednej broni w celu wyświetlenia jej statystyk, wyposażenia jej lub wyrzucenia.
+- Wyświetla ilość posiadanych sprzedawalnych przedmiotów oraz waluty(emeraldów).
+- Fajnie jakby z tymi sprzedawalnymi przedmiotami dało się coś więcej robić bo jak nie to można zrobić tak żeby moby dropiły od razu emeraldy.
+*/
