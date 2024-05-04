@@ -81,8 +81,9 @@ class Creeper : public Mobek {
 	int exp = 1;
 };
 
-void menuGlowne() {
+std::string menuGlowne() {
 	system("cls");
+	std::string decyzja;
 	std::cout << std::endl;
 	std::cout << "\t$$\\      $$\\ $$$$$$\\ $$\\   $$\\ $$$$$$$$\\  $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$$\\ $$$$$$$$\\ " << std::endl;
 	std::cout << "\t$$$\\    $$$ |\\_$$  _|$$$\\  $$ |$$  _____|$$  __$$\\ $$  __$$\\ $$  __$$\\ $$  _____|\\__$$  __|" << std::endl;
@@ -106,10 +107,14 @@ void menuGlowne() {
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
+	std::cout << ">";
+	std::cin >> decyzja;
+	return decyzja;
 }
 
-void menuGry(std::string nazwa, int poziom, int szmaragdy) {
+std::string menuGry(std::string nazwa, int poziom, int szmaragdy) {
 	system("cls");
+	std::string decyzja;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << nazwa << std::endl;
@@ -128,6 +133,9 @@ void menuGry(std::string nazwa, int poziom, int szmaragdy) {
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
+	std::cout << ">";
+	std::cin >> decyzja;
+	return decyzja;
 }
 
 std::string podajNazwe() {
@@ -147,10 +155,9 @@ int main() {
 	setlocale(LC_ALL, "polish");
 	Gracz gracz("Bezimienny");
 	std::string decyzja;
+
 	do {
-		menuGlowne();
-		std::cout << ">";
-		std::cin >> decyzja;
+		decyzja = menuGlowne();
 		if (decyzja == "1") {
 			gracz.nazwa_gracza=(podajNazwe());
 		}
@@ -166,9 +173,7 @@ int main() {
 	} while (decyzja == "0");
 
 	do {
-		menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
-		std::cout << ">";
-		std::cin >> decyzja;
+		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
 		if (decyzja == "1") {
 		}
 		else if (decyzja == "2") {
