@@ -6,22 +6,24 @@
 #include "Moby.h"
 #include "Przedmioty.h"
 
-void wczytajDane() {}
+void wczytajDane() {							//Funkcja wczytująca zapis gry
+}
 
 int main() {
 	setlocale(LC_ALL, "polish");
 	Gracz gracz("Bezimienny");
 	std::string decyzja;
+	std::string decyzjaExpiarki;
 
 	do {
 		decyzja = menuGlowne();
-		if (decyzja == "1") {
+		if (decyzja == "1") {					//"NOWA GRA"
 			gracz.nazwa_gracza=(podajNazwe());
 		}
-		else if (decyzja == "2") {
+		else if (decyzja == "2") {				//"WCZYTAJ ZAPIS"
 			wczytajDane();
 		}
-		else if (decyzja == "3") {
+		else if (decyzja == "3") {				//"WYJŚCIE"
 			return 0;
 		}
 		else {
@@ -31,15 +33,23 @@ int main() {
 
 	do {
 		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
-		if (decyzja == "1") {
+		if (decyzja == "1") {												//"Idź do expiarki"
+			do {
+				decyzjaExpiarki = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, gracz.exp);
+				if (decyzjaExpiarki == "1") {
+					gracz.addExp(1);			//dodawanie expa i waluty tak tylko dla testa
+					gracz.addWaluta(1);
+				}
+			} while (decyzjaExpiarki != "2");
+			decyzja = "0";
 		}
-		else if (decyzja == "2") {
+		else if (decyzja == "2") {											//"Idź do sklepu"
 		}
-		else if (decyzja == "3") {
+		else if (decyzja == "3") {											//"Enchantuj broń"
 		}
-		else if (decyzja == "4") {
+		else if (decyzja == "4") {											//"Organizuj ekwipunek"
 		}
-		else if (decyzja == "5") {
+		else if (decyzja == "5") {											//"Wróć do menu głównego"
 			main();
 		}
 		else {

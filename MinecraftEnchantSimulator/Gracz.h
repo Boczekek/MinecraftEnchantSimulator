@@ -16,6 +16,19 @@ public:
 
 	void addExp(int exp) {					//Metoda dodaj¹ca punkty doœwiadczenia
 		this->exp += exp;
+
+		if (this->exp >= (lvl + 2) * 7 / 2) {
+			this->exp -= ((lvl + 2) * 7 / 2);
+			lvl++;
+		}
+		if (this->exp < 0) {
+			lvl--;
+			this->exp = ((lvl + 2) * 7 / 2) - abs(this->exp);
+		}
+		if (lvl <= 0 && this->exp < 0) {
+			this->exp = 0;
+			lvl = 0;
+		}
 	}
 
 	int getExp(void) {						//Getter expa
@@ -28,16 +41,5 @@ public:
 
 	int getWaluta(void) {					//Getter waluty
 		return waluta;
-	}
-
-	void lvlChange() {						//Przeliczanie exp na lvl
-		if (exp >= (lvl + 2) * 7 / 2) {
-			exp -= ((lvl + 2) * 7 / 2);
-			lvl++;
-		}
-		if (exp < 0) {
-			lvl--;
-			exp = ((lvl + 2) * 7 / 2) - abs(exp);
-		}
 	}
 };

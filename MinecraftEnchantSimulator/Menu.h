@@ -64,9 +64,37 @@ std::string podajNazwe() {
 	system("cls");
 	std::string nazwa;
 	std::cout << std::endl;
-	std::cout << "Podaj nazwê gracza!" << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "\t[ Podaj nazwê gracza ]" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
 	std::cout << ">";
 	std::cin >> nazwa;
 	return nazwa;
+}
+
+std::string menuExpiarki(std::string nazwa, int poziom, int szmaragdy ,int expik) {
+	system("cls");
+	std::string decyzja;
+	int nextLVL = (poziom + 2) * 7 / 2;
+	std::cout << std::endl;
+	std::cout << "\t    [ EXPIARKA ]" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << nazwa << std::endl;
+	std::cout << "Poziom: " << poziom << " | XP: " << expik << "/" << nextLVL << " | Szmaragdy: " << szmaragdy << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << "?Nazwa wylosowanego mobka?" << std::endl;
+	std::cout << "HP: " << "?Iloœæ hp mobka?" << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "| 1 - Atak | 2 - Wyjœcie |" << std::endl;
+	std::cout << std::endl;
+	std::cout << ">";
+	std::cin >> decyzja;
+	return decyzja;
 }
