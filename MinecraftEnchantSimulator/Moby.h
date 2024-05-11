@@ -7,7 +7,7 @@
 
 class Mobek : public Przedmioty {
 public:
-	int hp = 0;
+	int hp = 30;
 	int exp = 0;
 	void setterHp(int hp) {
 		this->hp = hp;
@@ -18,6 +18,14 @@ public:
 	void zadanieDmg(int dmg) {				//Dajesz mu dmg a on ci zmienia hp moba
 		int hp = this->hp - dmg;
 		setterHp(hp);
+	};
+	std::string losowanko(void) {
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<> dis(0, 3);
+		int losowo = dis(gen);
+		std::vector<std::string> mobki{ "Zombie","Skeleton","Spider","Creeper" };
+		return mobki[losowo];
 	};
 };
 
@@ -52,7 +60,7 @@ class Creeper : public Mobek {
 //	return x;
 // };
 
-// std::vector<std::string> mobki{ "Zombie","Skeleton","Spider","Creeper" };
+
 // std::cout << "Twój mobek to: " << mobki[random()];
 
 //__________________________________________________________________________________________________________
