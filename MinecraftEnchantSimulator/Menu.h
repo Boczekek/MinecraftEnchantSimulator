@@ -79,7 +79,7 @@ std::string podajNazwe() {
 	return nazwa;
 }
 
-std::string menuExpiarki(std::string nazwa, int poziom, int szmaragdy ,int expik, int hp) {
+std::string menuExpiarki(std::string nazwa, int poziom, int szmaragdy, int expik, int hp, std::string nazwaMobka) {
 	system("cls");
 	std::string decyzja;
 	int nextLVL = (poziom + 2) * 7 / 2;
@@ -92,7 +92,7 @@ std::string menuExpiarki(std::string nazwa, int poziom, int szmaragdy ,int expik
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
-	std::cout << "?Nazwa wylosowanego mobka?" << std::endl;
+	std::cout << nazwaMobka << std::endl;
 	std::cout << "HP: " << hp << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
