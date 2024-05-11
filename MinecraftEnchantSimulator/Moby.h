@@ -21,6 +21,7 @@ public:
 	};
 };
 
+
 class Zombie : public Mobek {
 public:
 	int hp = 20;
