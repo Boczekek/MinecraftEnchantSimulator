@@ -11,7 +11,10 @@ void wczytajDane() {							//Funkcja wczytująca zapis gry
 
 int main() {
 	setlocale(LC_ALL, "polish");
+	Mobek mobek;
 	Gracz gracz("Bezimienny");
+	mobek.losowanko();
+	mobek.losowyMobek();
 	std::string decyzja;
 	std::string decyzjaExpiarki;
 
@@ -35,10 +38,15 @@ int main() {
 		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
 		if (decyzja == "1") {												//"Idź do expiarki"
 			do {
-				decyzjaExpiarki = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, gracz.exp);
+				decyzjaExpiarki = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
 				if (decyzjaExpiarki == "1") {
-					gracz.addExp(1);			//dodawanie expa i waluty tak tylko dla testa
-					gracz.addWaluta(1);
+					mobek.zadanieDmg(3);
+					if(mobek.getterHp() <= 0) {
+						gracz.addExp(mobek.getterExp());			//dodawanie expa i waluty tak tylko dla testa
+						gracz.addWaluta(1);
+						mobek.losowanko();
+						mobek.losowyMobek();
+					}
 				}
 			} while (decyzjaExpiarki != "2");
 			decyzja = "0";
