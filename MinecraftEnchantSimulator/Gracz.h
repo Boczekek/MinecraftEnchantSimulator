@@ -31,15 +31,7 @@ public:
 		}
 	}
 
-	int getExp(void) {						//Getter expa
-		return exp;
-	}
-
 	void addWaluta(int waluta) {			//Metoda dodaj¹ca walutê
 		this->waluta += waluta;
-	}
-
-	int getWaluta(void) {					//Getter waluty
-		return waluta;
 	}
 };

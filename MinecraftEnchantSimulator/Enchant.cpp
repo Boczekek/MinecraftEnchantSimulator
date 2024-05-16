@@ -13,10 +13,8 @@ int main() {
 	setlocale(LC_ALL, "polish");
 	Mobek mobek;
 	Gracz gracz("Bezimienny");
-	mobek.losowanko();
 	mobek.losowyMobek();
 	std::string decyzja;
-	std::string decyzjaExpiarki;
 
 	do {
 		decyzja = menuGlowne();
@@ -38,20 +36,27 @@ int main() {
 		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
 		if (decyzja == "1") {												//"Idź do expiarki"
 			do {
-				decyzjaExpiarki = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
-				if (decyzjaExpiarki == "1") {
+				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
+				if (decyzja == "1") {
 					mobek.zadanieDmg(3);
 					if(mobek.getterHp() <= 0) {
-						gracz.addExp(mobek.getterExp());			//dodawanie expa i waluty tak tylko dla testa
+						gracz.addExp(mobek.getterExp());
 						gracz.addWaluta(1);
-						mobek.losowanko();
 						mobek.losowyMobek();
 					}
 				}
-			} while (decyzjaExpiarki != "2");
-			decyzja = "0";
+			} while (decyzja != "0");
 		}
 		else if (decyzja == "2") {											//"Idź do sklepu"
+			do {
+				decyzja = menuSklepu(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
+				if (decyzja == "1") {
+					do {
+						decyzja = sklepBronie(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
+					} while (decyzja != "0");
+					decyzja = "";
+				}
+			} while (decyzja != "0");
 		}
 		else if (decyzja == "3") {											//"Enchantuj broń"
 		}
