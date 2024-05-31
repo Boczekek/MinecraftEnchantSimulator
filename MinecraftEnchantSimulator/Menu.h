@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Moby.h"
+#include "Przedmioty.h"
 
 std::string menuGlowne() {
 	system("cls");
@@ -37,16 +38,18 @@ std::string menuGlowne() {
 	return decyzja;
 }
 
-std::string menuGry(std::string nazwa, int poziom, int szmaragdy) {
+std::string menuGry(std::string nazwa, int poziom, int szmaragdy, std::string nazwaBroni, int dmg) {
 	system("cls");
 	std::string decyzja;
+	std::cout << std::endl;
+	std::cout << "\t[ Co chcesz zrobiæ? ]" << std::endl;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << nazwa << std::endl;
 	std::cout << "Poziom: " << poziom << " | Szmaragdy: " << szmaragdy << std::endl;
-	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
-	std::cout << "\t[ Co chcesz zrobiæ? ]" << std::endl;
+	std::cout << "Broñ: " << nazwaBroni << " [DMG: " << dmg << "]" << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
@@ -78,7 +81,7 @@ std::string podajNazwe() {
 	return nazwa;
 }
 
-std::string menuExpiarki(std::string nazwaGracza, int poziomGracza, int szmaragdy, int expik, int hp, std::string nazwaMobka) {
+std::string menuExpiarki(std::string nazwaGracza, int poziomGracza, std::string nazwaBroni, int dmg, int szmaragdy, int expik, int hp, std::string nazwaMobka) {
 	system("cls");
 	std::string decyzja;
 	int nextLVL = (poziomGracza + 2) * 7 / 2;
@@ -88,6 +91,8 @@ std::string menuExpiarki(std::string nazwaGracza, int poziomGracza, int szmaragd
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << nazwaGracza << std::endl;
 	std::cout << "Poziom: " << poziomGracza << " | XP: " << expik << "/" << nextLVL << " | Szmaragdy: " << szmaragdy << std::endl;
+	std::cout << std::endl;
+	std::cout << "Broñ: " << nazwaBroni << " [DMG: " << dmg << "]" << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
@@ -105,7 +110,6 @@ std::string menuExpiarki(std::string nazwaGracza, int poziomGracza, int szmaragd
 std::string menuSklepu(std::string nazwaGracza, int poziomGracza, int szmaragdy) {
 	system("cls");
 	std::string decyzja;
-	std::vector<std::string> listaPrzedmiotow;
 	std::cout << std::endl;
 	std::cout << "\t    [ SKLEP ]" << std::endl;
 	std::cout << std::endl;
@@ -128,10 +132,12 @@ std::string menuSklepu(std::string nazwaGracza, int poziomGracza, int szmaragdy)
 	return decyzja;
 }
 
+DrewnianyMiecz drewnianymiecz;
+std::vector<std::string> listaBroni{ drewnianymiecz.infoSklep()};
+
 std::string sklepBronie(std::string nazwaGracza, int poziomGracza, int szmaragdy) {
 	system("cls");
 	std::string decyzja;
-	std::vector<std::string> listaPrzedmiotow;
 	std::cout << std::endl;
 	std::cout << "\t [ SKLEP - BRONIE ]" << std::endl;
 	std::cout << std::endl;
@@ -144,6 +150,11 @@ std::string sklepBronie(std::string nazwaGracza, int poziomGracza, int szmaragdy
 	std::cout << std::endl;
 	std::cout << "Bronie:" << std::endl;
 	std::cout << std::endl;
+
+	for (int i = 0; i != listaBroni.size(); i++)
+	std::cout << i + 1 << " - " << listaBroni[i] << std::endl;
+
+	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
 	std::cout << "| 0 - Wyjœcie |" << std::endl;
@@ -152,3 +163,36 @@ std::string sklepBronie(std::string nazwaGracza, int poziomGracza, int szmaragdy
 	std::cin >> decyzja;
 	return decyzja;
 }
+
+std::vector<std::string> listaEkpitunek;
+
+std::string menuEkwipunek(std::string nazwa, int poziom, int szmaragdy, std::string nazwaBroni, int dmg) {
+	system("cls");
+	std::string decyzja;
+	std::cout << std::endl;
+	std::cout << "\t   [ EKWIPUNEK ]" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << nazwa << std::endl;
+	std::cout << "Poziom: " << poziom << " | Szmaragdy: " << szmaragdy << std::endl;
+	std::cout << std::endl;
+	std::cout << "Broñ: " << nazwaBroni << " [DMG: " << dmg << "]" << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "Twoje bronie:" << std::endl;
+	std::cout << std::endl;
+
+	for (int i = 0; i != listaEkpitunek.size(); i++)
+		std::cout << i + 1 << " - " << listaEkpitunek[i] << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "| 0 - Wyjœcie |" << std::endl;
+	std::cout << std::endl;
+	std::cout << ">";
+	std::cin >> decyzja;
+	return decyzja;
+};

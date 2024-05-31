@@ -33,12 +33,12 @@ int main() {
 	} while (decyzja == "0");
 
 	do {
-		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
+		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage);
 		if (decyzja == "1") {												//"Idź do expiarki"
 			do {
-				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
+				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, brongracza->nazwa, brongracza->damage, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
 				if (decyzja == "1") {
-					mobek.zadanieDmg(3);
+					mobek.zadanieDmg(brongracza->damage);
 					if(mobek.getterHp() <= 0) {
 						gracz.addExp(mobek.getterExp());
 						gracz.addWaluta(1);
@@ -53,6 +53,11 @@ int main() {
 				if (decyzja == "1") {
 					do {
 						decyzja = sklepBronie(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
+						if (decyzja == "1" && gracz.waluta >= drewnianymiecz.cena) {
+							listaEkpitunek.push_back(drewnianymiecz.infoEkwipunek());
+							gracz.addWaluta(-drewnianymiecz.cena);
+							brongracza = &drewnianymiecz;			//dla testu bo nie ma ekwipunku
+						}
 					} while (decyzja != "0");
 					decyzja = "";
 				}
@@ -61,6 +66,12 @@ int main() {
 		else if (decyzja == "3") {											//"Enchantuj broń"
 		}
 		else if (decyzja == "4") {											//"Organizuj ekwipunek"
+			do {
+				decyzja = menuEkwipunek(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage);
+				if (decyzja == "1") {
+					int i = 1;
+				}
+			} while (decyzja != "0");
 		}
 		else if (decyzja == "5") {											//"Wróć do menu głównego"
 			main();

@@ -35,3 +35,11 @@ public:
 		this->waluta += waluta;
 	}
 };
+
+class BronGracza {
+public:
+	std::string nazwa = "Brak broni";
+	int damage = 1;
+};
+
+BronGracza* brongracza = new BronGracza;

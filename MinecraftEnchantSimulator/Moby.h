@@ -3,9 +3,7 @@
 #include <vector>
 #include <random>
 
-#include "Przedmioty.h"
-
-class Mobek : public Przedmioty {
+class Mobek {
 public:
 	int hp = 0;
 	int exp = 0;
