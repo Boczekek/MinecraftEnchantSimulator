@@ -132,7 +132,6 @@ std::string menuSklepu(std::string nazwaGracza, int poziomGracza, int szmaragdy)
 	return decyzja;
 }
 
-DrewnianyMiecz drewnianymiecz;
 std::vector<std::string> listaBroni{ drewnianymiecz.infoSklep()};
 
 std::string sklepBronie(std::string nazwaGracza, int poziomGracza, int szmaragdy) {
