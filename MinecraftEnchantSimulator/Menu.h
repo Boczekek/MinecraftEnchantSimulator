@@ -212,6 +212,7 @@ std::string menuEnchant(std::string nazwa, int poziom, int szmaragdy, std::strin
 	std::cout << "1 - " << enchant1 << std::endl;
 	std::cout << "2 - " << enchant2 << std::endl;
 	std::cout << "3 - " << enchant3 << std::endl;
+	std::cout << "4 - Usuñ enchant" << std::endl;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
