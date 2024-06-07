@@ -24,7 +24,7 @@ int main() {
 		else if (decyzja == "2") {				//"WCZYTAJ ZAPIS"
 			wczytajDane();
 		}
-		else if (decyzja == "3") {				//"WYJŚCIE"
+		else if (decyzja == "3") {				//"WYJŚCIE" sdaadadqaffaf
 			return 0;
 		}
 		else {
