@@ -10,7 +10,6 @@ public:
 	int losowo = 0;
 
 
-
 	void losowanieEnchant(int lvl) {
 
 		std::random_device rd;
@@ -18,7 +17,7 @@ public:
 		std::uniform_int_distribution<> dis(0, 4);
 		losowo = dis(gen);
 	}
-	std::string nazwaEnchantow(int lvl) {
+	std::string nazwaEnchantowTier1(int lvl) {
 		if (lvl <= 10) {
 			switch (losowo) {
 			case 0:
@@ -27,6 +26,52 @@ public:
 				return "smite I";
 			case 2:
 				return "bane of arthropods I";
+			case 3:
+				return "bane of arthropods II";
+			case 4:
+				return "smite II";
+			}
+		}
+		else if (lvl <= 20 && lvl > 10) {
+			return "15";
+		}
+		else if (lvl > 20) {
+			return "25";
+		}
+	}
+
+	std::string nazwaEnchantowTier2(int lvl) {
+		if (lvl <= 10) {
+			switch (losowo) {
+			case 0:
+				return "smite II";
+			case 1:
+				return "bane of arthropods II";
+			case 2:
+				return "sharpness I";
+			case 3:
+				return "smite III";
+			case 4:
+				return "bane of arthropods III";
+			}
+		}
+		else if (lvl <= 20 && lvl > 10) {
+			return "15";
+		}
+		else if (lvl > 20) {
+			return "25";
+		}
+	}
+
+	std::string nazwaEnchantowTier3(int lvl) {
+		if (lvl <= 10) {
+			switch (losowo) {
+			case 0:
+				return "bane of arthropods III";
+			case 1:
+				return "sharpness II";
+			case 2:
+				return "smite III";
 			case 3:
 				return "looting I";
 			case 4:
@@ -60,7 +105,7 @@ public:
 //		education - 1
 //
 //	Od lvl 11 do 20
-//		sharpness - od 2 do 3
+//		sharpness - od 1 do 3
 //		smite - od 2 do 5
 //		bane of arthropods - od 2 do 5
 //		looting - od 1 do 2

@@ -103,7 +103,7 @@ int main() {
 		}
 		else if (decyzja == "3") {
 			do {															//"Enchantuj broń"
-				decyzja = menuEnchant(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, enchants.nazwaEnchantow(gracz.lvl));
+				decyzja = menuEnchant(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, enchants.nazwaEnchantowTier1(gracz.lvl), enchants.nazwaEnchantowTier2(gracz.lvl), enchants.nazwaEnchantowTier3(gracz.lvl));
 
 			} while (decyzja != "0");
 		}
