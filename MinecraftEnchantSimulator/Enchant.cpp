@@ -5,12 +5,14 @@
 #include "Gracz.h"
 #include "Moby.h"
 #include "Przedmioty.h"
+#include "Enchant.h"
 
 void wczytajDane() {							//Funkcja wczytująca zapis gry
 }
 
 int main() {
 	setlocale(LC_ALL, "polish");
+	Enchants enchants;
 	Mobek mobek;
 	Gracz gracz("Bezimienny");
 	mobek.losowyMobek();
@@ -98,7 +100,11 @@ int main() {
 				}
 			} while (decyzja != "0");
 		}
-		else if (decyzja == "3") {											//"Enchantuj broń"
+		else if (decyzja == "3") {
+			do {															//"Enchantuj broń"
+				decyzja = menuEnchant(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
+
+			} while (decyzja != "0");
 		}
 		else if (decyzja == "4") {											//"Organizuj ekwipunek"
 			do {

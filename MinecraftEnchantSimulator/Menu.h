@@ -195,3 +195,26 @@ std::string menuEkwipunek(std::string nazwa, int poziom, int szmaragdy, std::str
 	std::cin >> decyzja;
 	return decyzja;
 };
+
+std::string menuEnchant(std::string nazwa, int poziom, int szmaragdy) {
+	system("cls");
+	std::string decyzja;
+	std::cout << std::endl;
+	std::cout << "\t    [ Enchant ]" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << nazwa << std::endl;
+	std::cout << "Poziom: " << poziom  << " | Szmaragdy: " << szmaragdy << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "1 - Enchantuj" << std::endl;
+	std::cout << "0 - Wyjœcie" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << ">";
+	std::cin >> decyzja;
+	return decyzja;
+};
