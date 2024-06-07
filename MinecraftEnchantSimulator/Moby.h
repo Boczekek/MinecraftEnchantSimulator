@@ -3,9 +3,7 @@
 #include <vector>
 #include <random>
 
-#include "Przedmioty.h"
-
-class Mobek : public Przedmioty {
+class Mobek {
 public:
 	int hp = 0;
 	int exp = 0;
@@ -26,13 +24,12 @@ public:
 		int hp = this->hp - dmg;
 		setterHp(hp);
 	};
-	void losowanko(void) {
+
+	void losowyMobek(void) {
 		std::random_device rd;
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<> dis(0, 3);
 		this->losowo = dis(gen);
-	};
-	void losowyMobek(void) {
 		switch (this->losowo) {
 		case 0:
 			setterHp(20);
@@ -42,7 +39,7 @@ public:
 			setterHp(20);
 			setterExp(5);
 			break;
-		case 2:
+		case 2:				//Paj¹k
 			setterHp(16);
 			setterExp(5);
 			break;

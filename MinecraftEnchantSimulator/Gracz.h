@@ -31,15 +31,15 @@ public:
 		}
 	}
 
-	int getExp(void) {						//Getter expa
-		return exp;
-	}
-
 	void addWaluta(int waluta) {			//Metoda dodaj¹ca walutê
 		this->waluta += waluta;
 	}
-
-	int getWaluta(void) {					//Getter waluty
-		return waluta;
-	}
 };
+
+class BronGracza {
+public:
+	std::string nazwa = "Brak broni";
+	int damage = 1;
+};
+
+BronGracza* brongracza = new BronGracza;
