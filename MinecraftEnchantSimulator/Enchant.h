@@ -11,35 +11,33 @@ public:
 
 
 
-
-
-
 	void losowanieEnchant(int lvl) {
 
 		std::random_device rd;
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<> dis(0, 4);
 		losowo = dis(gen);
-
+	}
+	std::string nazwaEnchantow(int lvl) {
 		if (lvl <= 10) {
 			switch (losowo) {
 			case 0:
-				std::cout << "sharpness I";
+				return "sharpness I";
 			case 1:
-				std::cout << "smite I";
+				return "smite I";
 			case 2:
-				std::cout << "bane of arthropods I";
+				return "bane of arthropods I";
 			case 3:
-				std::cout << "looting I";
+				return "looting I";
 			case 4:
-				std::cout << "education I";
+				return "education I";
 			}
 		}
 		else if (lvl <= 20 && lvl > 10) {
-			std::cout << "15";
+			return "15";
 		}
 		else if (lvl > 20) {
-			std::cout << "25";
+			return "25";
 		}
 	}
 };

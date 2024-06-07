@@ -196,7 +196,7 @@ std::string menuEkwipunek(std::string nazwa, int poziom, int szmaragdy, std::str
 	return decyzja;
 };
 
-std::string menuEnchant(std::string nazwa, int poziom, int szmaragdy) {
+std::string menuEnchant(std::string nazwa, int poziom, int szmaragdy, std::string enchant1) {
 	system("cls");
 	std::string decyzja;
 	std::cout << std::endl;
@@ -209,7 +209,12 @@ std::string menuEnchant(std::string nazwa, int poziom, int szmaragdy) {
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
-	std::cout << "1 - Enchantuj" << std::endl;
+	std::cout << "1 - " << enchant1 << std::endl;
+	std::cout << "2 - " << enchant1 << std::endl;
+	std::cout << "3 - " << enchant1 << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
 	std::cout << "0 - Wyjœcie" << std::endl;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;

@@ -16,6 +16,7 @@ int main() {
 	Mobek mobek;
 	Gracz gracz("Bezimienny");
 	mobek.losowyMobek();
+	enchants.losowanieEnchant(gracz.lvl);
 	std::string decyzja;
 
 	do {
@@ -102,7 +103,7 @@ int main() {
 		}
 		else if (decyzja == "3") {
 			do {															//"Enchantuj broń"
-				decyzja = menuEnchant(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
+				decyzja = menuEnchant(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, enchants.nazwaEnchantow(gracz.lvl));
 
 			} while (decyzja != "0");
 		}
