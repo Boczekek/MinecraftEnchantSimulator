@@ -45,7 +45,7 @@ int main() {
 					mobek.zadanieDmg(enchants.dmg);
 					if(mobek.getterHp() <= 0) {
 						gracz.addExp(mobek.getterExp());
-						gracz.addWaluta(1);
+						gracz.addWaluta(5);
 						mobek.losowyMobek();
 					}
 				}

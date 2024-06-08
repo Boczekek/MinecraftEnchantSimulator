@@ -33,10 +33,32 @@ public:
 			}
 		}
 		else if (lvl <= 20 && lvl > 10) {
-			return "15";
+			switch (losowo) {
+			case 0:
+				return "bane of arthropods.II";
+			case 1:
+				return "sharpness.I";
+			case 2:
+				return "smite.III";
+			case 3:
+				return "smite.II";
+			case 4:
+				return "bane of arthropods.III";
+			}
 		}
 		else if (lvl > 20) {
-			return "25";
+			switch (losowo) {
+			case 0:
+				return "smite.IV";
+			case 1:
+				return "education.I";
+			case 2:
+				return "bane of arthropods.IV";
+			case 3:
+				return "looting.I";
+			case 4:
+				return "sharpness.III";
+			}
 		}
 	}
 
@@ -56,10 +78,32 @@ public:
 			}
 		}
 		else if (lvl <= 20 && lvl > 10) {
-			return "15";
+			switch (losowo) {
+			case 0:
+				return "sharpness.II";
+			case 1:
+				return "looting.I";
+			case 2:
+				return "bane of arthropods.III";
+			case 3:
+				return "education.I";
+			case 4:
+				return "smite.III";
+			}
 		}
 		else if (lvl > 20) {
-			return "25";
+			switch (losowo) {
+			case 0:
+				return "sharpness.IV";
+			case 1:
+				return "looting.II";
+			case 2:
+				return "education.II";
+			case 3:
+				return "smite.IV";
+			case 4:
+				return "bane of arthropods.IV";
+			}
 		}
 	}
 
@@ -79,10 +123,32 @@ public:
 			}
 		}
 		else if (lvl <= 20 && lvl > 10) {
-			return "15";
+			switch (losowo) {
+			case 0:
+				return "smite.IV";
+			case 1:
+				return "bane of arthropods.IV";
+			case 2:
+				return "sharpness.III";
+			case 3:
+				return "looting.II";
+			case 4:
+				return "education.II";
+			}
 		}
 		else if (lvl > 20) {
-			return "25";
+			switch (losowo) {
+			case 0:
+				return "looting.III";
+			case 1:
+				return "smite.V";
+			case 2:
+				return "bane of arthropods.V";
+			case 3:
+				return "sharpness.V";
+			case 4:
+				return "education.III";
+			}
 		}
 	}
 
@@ -125,14 +191,14 @@ public:
 //
 //	Od lvl 11 do 20
 //		sharpness - od 1 do 3
-//		smite - od 2 do 5
-//		bane of arthropods - od 2 do 5
+//		smite - od 2 do 4
+//		bane of arthropods - od 2 do 4
 //		looting - od 1 do 2
 //		education - od 1 do 2
 //
 //	Od lvl 21 do 30
 //		sharpness - od 3 do 5
-//		smite - od 3 do 5
-//		bane of arthropods - od 3 do 5
-//		looting - od 2 do 3
-//		education - od 2 do 3
+//		smite - od 4 do 5
+//		bane of arthropods - od 4 do 5
+//		looting - od 1 do 3
+//		education - od 1 do 3

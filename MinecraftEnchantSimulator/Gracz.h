@@ -3,6 +3,8 @@
 #include <string>
 #include <cmath>
 
+#include "Enchant.h"
+
 class Gracz {
 public:
 	std::string nazwa_gracza = "";
