@@ -57,42 +57,64 @@ int main() {
 				if (decyzja == "1") {
 					do {
 						decyzja = sklepBronie(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
-						if (decyzja == "1" && gracz.waluta >= drewnianymiecz.cena && drewnianymiecz.dostepny == true) {
+						if (decyzja == "1" && gracz.waluta >= drewnianymiecz.cena && drewnianymiecz.dostepny == true && drewnianymiecz.kupiony == false) {
+							drewnianymiecz.kupiony = true;
+							listaBroni[0] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(drewnianymiecz.infoEkwipunek());
 							gracz.addWaluta(-drewnianymiecz.cena);
 							brongracza = &drewnianymiecz;			//dla testu bo nie ma ekwipunku
-							zlotymiecz.dostepny = true;
-							listaBroni.push_back(zlotymiecz.infoSklep());
+							if (zlotymiecz.dostepny == false) {
+								zlotymiecz.dostepny = true;
+								listaBroni.push_back(zlotymiecz.infoSklep());
+							}
 						}
-						else if (decyzja == "2" && gracz.waluta >= zlotymiecz.cena && zlotymiecz.dostepny == true) {
+						else if (decyzja == "2" && gracz.waluta >= zlotymiecz.cena && zlotymiecz.dostepny == true && zlotymiecz.kupiony == false) {
+							zlotymiecz.kupiony = true;
+							listaBroni[1] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(zlotymiecz.infoEkwipunek());
 							gracz.addWaluta(-zlotymiecz.cena);
 							brongracza = &zlotymiecz;			//dla testu bo nie ma ekwipunku
-							kamiennymiecz.dostepny = true;
-							listaBroni.push_back(kamiennymiecz.infoSklep());
+							if (kamiennymiecz.dostepny == false) {
+								kamiennymiecz.dostepny = true;
+								listaBroni.push_back(kamiennymiecz.infoSklep());
+							}
 						}
-						else if (decyzja == "3" && gracz.waluta >= kamiennymiecz.cena && kamiennymiecz.dostepny == true) {
+						else if (decyzja == "3" && gracz.waluta >= kamiennymiecz.cena && kamiennymiecz.dostepny == true && kamiennymiecz.kupiony == false) {
+							kamiennymiecz.kupiony = true;
+							listaBroni[2] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(kamiennymiecz.infoEkwipunek());
 							gracz.addWaluta(-kamiennymiecz.cena);
 							brongracza = &kamiennymiecz;			//dla testu bo nie ma ekwipunku
-							zelaznymiecz.dostepny = true;
-							listaBroni.push_back(zelaznymiecz.infoSklep());
+							if (zelaznymiecz.dostepny == false) {
+								zelaznymiecz.dostepny = true;
+								listaBroni.push_back(zelaznymiecz.infoSklep());
+							}
 						}
-						else if (decyzja == "4" && gracz.waluta >= zelaznymiecz.cena && zelaznymiecz.dostepny == true) {
+						else if (decyzja == "4" && gracz.waluta >= zelaznymiecz.cena && zelaznymiecz.dostepny == true && zelaznymiecz.kupiony == false) {
+							zelaznymiecz.kupiony = true;
+							listaBroni[3] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(zelaznymiecz.infoEkwipunek());
 							gracz.addWaluta(-zelaznymiecz.cena);
 							brongracza = &zelaznymiecz;			//dla testu bo nie ma ekwipunku
-							diamentowymiecz.dostepny = true;
-							listaBroni.push_back(diamentowymiecz.infoSklep());
+							if (diamentowymiecz.dostepny == false) {
+								diamentowymiecz.dostepny = true;
+								listaBroni.push_back(diamentowymiecz.infoSklep());
+							}
 						}
-						else if (decyzja == "5" && gracz.waluta >= diamentowymiecz.cena && diamentowymiecz.dostepny == true) {
+						else if (decyzja == "5" && gracz.waluta >= diamentowymiecz.cena && diamentowymiecz.dostepny == true && diamentowymiecz.kupiony == false) {
+							diamentowymiecz.kupiony = true;
+							listaBroni[4] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(diamentowymiecz.infoEkwipunek());
 							gracz.addWaluta(-diamentowymiecz.cena);
 							brongracza = &diamentowymiecz;			//dla testu bo nie ma ekwipunku
-							netherytowymiecz.dostepny = true;
-							listaBroni.push_back(netherytowymiecz.infoSklep());
+							if (netherytowymiecz.dostepny == false) {
+								netherytowymiecz.dostepny = true;
+								listaBroni.push_back(netherytowymiecz.infoSklep());
+							}
 						}
-						else if (decyzja == "6" && gracz.waluta >= netherytowymiecz.cena && netherytowymiecz.dostepny == true) {
+						else if (decyzja == "6" && gracz.waluta >= netherytowymiecz.cena && netherytowymiecz.dostepny == true && netherytowymiecz.kupiony == false) {
+							netherytowymiecz.kupiony = true;
+							listaBroni[5] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(netherytowymiecz.infoEkwipunek());
 							gracz.addWaluta(-netherytowymiecz.cena);
 							brongracza = &netherytowymiecz;			//dla testu bo nie ma ekwipunku

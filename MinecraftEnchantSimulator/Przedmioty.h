@@ -8,6 +8,7 @@ class DrewnianyMiecz : public BronGracza {
 public:
 	int cena = 5;
 	bool dostepny = true;
+	bool kupiony = false;
 
 	DrewnianyMiecz() {
 		nazwa = "Drewniany miecz";
@@ -27,6 +28,7 @@ class ZlotyMiecz : public BronGracza {
 public:
 	int cena = 6;
 	bool dostepny = false;
+	bool kupiony = false;
 
 	ZlotyMiecz() {
 		nazwa = "Z³oty miecz";
@@ -46,6 +48,7 @@ class KamiennyMiecz : public BronGracza {
 public:
 	int cena = 25;
 	bool dostepny = false;
+	bool kupiony = false;
 
 	KamiennyMiecz() {
 		nazwa = "Kamienny miecz";
@@ -65,6 +68,7 @@ class ZelzanyMiecz : public BronGracza {
 public:
 	int cena = 75;
 	bool dostepny = false;
+	bool kupiony = false;
 
 	ZelzanyMiecz() {
 		nazwa = "¯elazny miecz";
@@ -84,6 +88,7 @@ class DiamentowyMiecz : public BronGracza {
 public:
 	int cena = 200;
 	bool dostepny = false;
+	bool kupiony = false;
 
 	DiamentowyMiecz() {
 		nazwa = "Diamentowy miecz";
@@ -103,6 +108,7 @@ class NetherytowyMiecz : public BronGracza {
 public:
 	int cena = 500;
 	bool dostepny = false;
+	bool kupiony = false;
 
 	NetherytowyMiecz() {
 		nazwa = "Netherytowy miecz";
