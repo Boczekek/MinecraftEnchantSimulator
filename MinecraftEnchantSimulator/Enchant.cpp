@@ -15,7 +15,7 @@ int main() {
 	Enchants enchants;
 	Mobek mobek;
 	Gracz gracz("Bezimienny");
-	mobek.losowyMobek();
+	mobek.losowyMobek(enchants.education());
 	enchants.losowanieEnchant();
 	std::string decyzja;
 
@@ -45,8 +45,8 @@ int main() {
 					mobek.zadanieDmg(enchants.dmg);
 					if(mobek.getterHp() <= 0) {
 						gracz.addExp(mobek.getterExp());
-						gracz.addWaluta(5);
-						mobek.losowyMobek();
+						gracz.addWaluta(enchants.looting());
+						mobek.losowyMobek(enchants.education());
 					}
 				}
 			} while (decyzja != "0");
@@ -105,16 +105,19 @@ int main() {
 		else if (decyzja == "3") {
 			do {															//"Enchantuj broń"
 				decyzja = menuEnchant(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, enchants.enchantowTier1(gracz.lvl), enchants.enchantowTier2(gracz.lvl), enchants.enchantowTier3(gracz.lvl));
-				if (decyzja == "1") {
+				if (decyzja == "1" && gracz.lvl >= 1) {
 					enchants.enchantowanie(enchants.enchantowTier1(gracz.lvl));
+					gracz.lvl -= 1;
 					enchants.losowanieEnchant();
 				}
-				if (decyzja == "2") {
+				if (decyzja == "2" && gracz.lvl >= 2) {
 					enchants.enchantowanie(enchants.enchantowTier2(gracz.lvl));
+					gracz.lvl -= 2;
 					enchants.losowanieEnchant();
 				}
-				if (decyzja == "3") {
+				if (decyzja == "3" && gracz.lvl >= 3) {
 					enchants.enchantowanie(enchants.enchantowTier3(gracz.lvl));
+					gracz.lvl -= 3;
 					enchants.losowanieEnchant();
 				}
 				if (decyzja == "4") {

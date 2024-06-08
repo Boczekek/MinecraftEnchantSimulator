@@ -7,6 +7,7 @@
 #include "Moby.h"
 #include "Przedmioty.h"
 
+
 std::string menuGlowne() {
 	system("cls");
 	std::string decyzja;

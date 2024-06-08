@@ -6,7 +6,7 @@
 
 class Enchants {
 public:
-	int dmg = 0;
+	int dmg = 1;
 	int losowo = 0;
 	std::vector<std::string> enchanty;
 		
@@ -161,14 +161,65 @@ public:
 	}
 
 	void liczenie(std::string mobek) {
-		dmg = 0;
+		dmg = 1;
 		for (std::string enchant : enchanty) {
+			//---------------------------------------------------------------------------------------------------//
+			// sharpness
 			if (enchant == "sharpness.I") dmg = dmg + 1;
 			else if (enchant == "sharpness.II") dmg = dmg + 2;
 			else if (enchant == "sharpness.III") dmg = dmg + 3;
 			else if (enchant == "sharpness.IV") dmg = dmg + 4;
 			else if (enchant == "sharpness.V") dmg = dmg + 5;
+			//---------------------------------------------------------------------------------------------------//
+			// smite dla zombie
+			else if (enchant == "smite.I" && mobek == "Zombie") dmg = dmg + 1;
+			else if (enchant == "smite.II" && mobek == "Zombie") dmg = dmg + 2;
+			else if (enchant == "smite.III" && mobek == "Zombie") dmg = dmg + 3;
+			else if (enchant == "smite.IV" && mobek == "Zombie") dmg = dmg + 4;
+			else if (enchant == "smite.V" && mobek == "Zombie") dmg = dmg + 5;
+			//---------------------------------------------------------------------------------------------------//
+			// smite dla skeleton
+			else if (enchant == "smite.I" && mobek == "Skeleton") dmg = dmg + 1;
+			else if (enchant == "smite.II" && mobek == "Skeleton") dmg = dmg + 2;
+			else if (enchant == "smite.III" && mobek == "Skeleton") dmg = dmg + 3;
+			else if (enchant == "smite.IV" && mobek == "Skeleton") dmg = dmg + 4;
+			else if (enchant == "smite.V" && mobek == "Skeleton") dmg = dmg + 5;
+			//---------------------------------------------------------------------------------------------------//
+			// bane of arthropods dla spider
+			else if (enchant == "bane of arthropods.I" && mobek == "Spider") dmg = dmg + 1;
+			else if (enchant == "bane of arthropods.II" && mobek == "Spider") dmg = dmg + 2;
+			else if (enchant == "bane of arthropods.III" && mobek == "Spider") dmg = dmg + 3;
+			else if (enchant == "bane of arthropods.IV" && mobek == "Spider") dmg = dmg + 4;
+			else if (enchant == "bane of arthropods.V" && mobek == "Spider") dmg = dmg + 5;
+			//---------------------------------------------------------------------------------------------------//
+			// bane of arthropods dla creeper
+			else if (enchant == "bane of arthropods.I" && mobek == "Creeper") dmg = dmg + 1;
+			else if (enchant == "bane of arthropods.II" && mobek == "Creeper") dmg = dmg + 2;
+			else if (enchant == "bane of arthropods.III" && mobek == "Creeper") dmg = dmg + 3;
+			else if (enchant == "bane of arthropods.IV" && mobek == "Creeper") dmg = dmg + 4;
+			else if (enchant == "bane of arthropods.V" && mobek == "Creeper") dmg = dmg + 5;
+			//---------------------------------------------------------------------------------------------------//
 		}
+	}
+
+	int education(void) {
+		int education = 5;
+		for (std::string enchant : enchanty) {
+			if (enchant == "education.I") education += 1;
+			if (enchant == "education.II") education += 2;
+			if (enchant == "education.III") education += 3;
+		}
+		return education;
+	}
+
+	int looting(void) {
+		int looting = 5;
+		for (std::string enchant : enchanty) {
+			if (enchant == "looting.I") looting += 1;
+			if (enchant == "looting.II") looting += 2;
+			if (enchant == "looting.III") looting += 3;
+		}
+		return looting;
 	}
 };
 

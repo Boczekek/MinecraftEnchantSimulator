@@ -25,7 +25,7 @@ public:
 		setterHp(hp);
 	};
 
-	void losowyMobek(void) {
+	void losowyMobek(int exp) {
 		std::random_device rd;
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<> dis(0, 3);
@@ -33,19 +33,19 @@ public:
 		switch (this->losowo) {
 		case 0:
 			setterHp(20);
-			setterExp(5);
+			setterExp(exp);
 			break;
 		case 1:
 			setterHp(20);
-			setterExp(5);
+			setterExp(exp);
 			break;
 		case 2:				//Paj¹k
 			setterHp(16);
-			setterExp(5);
+			setterExp(exp);
 			break;
 		case 3:
 			setterHp(20);
-			setterExp(5);
+			setterExp(exp);
 			break;
 		}
 	}
