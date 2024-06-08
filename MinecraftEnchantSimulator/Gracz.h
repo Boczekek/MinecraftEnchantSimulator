@@ -3,7 +3,6 @@
 #include <string>
 #include <cmath>
 
-
 class Gracz{
 public:
 	std::string nazwa_gracza = "";
