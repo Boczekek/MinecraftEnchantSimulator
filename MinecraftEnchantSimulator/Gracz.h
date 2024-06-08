@@ -3,7 +3,7 @@
 #include <string>
 #include <cmath>
 
-class Gracz {
+class Gracz{
 public:
 	std::string nazwa_gracza = "";
 	int exp = 0;
@@ -15,6 +15,7 @@ public:
 	}
 
 	void addExp(int exp) {					//Metoda dodaj¹ca punkty doœwiadczenia
+
 		this->exp += exp;
 
 		if (this->exp >= (lvl + 2) * 7 / 2) {
@@ -34,6 +35,7 @@ public:
 	void addWaluta(int waluta) {			//Metoda dodaj¹ca walutê
 		this->waluta += waluta;
 	}
+
 };
 
 class BronGracza {

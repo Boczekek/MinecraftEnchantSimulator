@@ -5,15 +5,18 @@
 #include "Gracz.h"
 #include "Moby.h"
 #include "Przedmioty.h"
+#include "Enchant.h"
 
 void wczytajDane() {							//Funkcja wczytująca zapis gry
 }
 
 int main() {
 	setlocale(LC_ALL, "polish");
+	Enchants enchants;
 	Mobek mobek;
 	Gracz gracz("Bezimienny");
-	mobek.losowyMobek();
+	mobek.losowyMobek(enchants.education());
+	enchants.losowanieEnchant();
 	std::string decyzja;
 
 	do {
@@ -38,11 +41,12 @@ int main() {
 			do {
 				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, brongracza->nazwa, brongracza->damage, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
 				if (decyzja == "1") {
-					mobek.zadanieDmg(brongracza->damage);
+					enchants.liczenie(mobek.nazwaMobka());
+					mobek.zadanieDmg(enchants.dmg);
 					if(mobek.getterHp() <= 0) {
 						gracz.addExp(mobek.getterExp());
-						gracz.addWaluta(1);
-						mobek.losowyMobek();
+						gracz.addWaluta(enchants.looting());
+						mobek.losowyMobek(enchants.education());
 					}
 				}
 			} while (decyzja != "0");
@@ -98,7 +102,28 @@ int main() {
 				}
 			} while (decyzja != "0");
 		}
-		else if (decyzja == "3") {											//"Enchantuj broń"
+		else if (decyzja == "3") {
+			do {															//"Enchantuj broń"
+				decyzja = menuEnchant(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, enchants.enchantowTier1(gracz.lvl), enchants.enchantowTier2(gracz.lvl), enchants.enchantowTier3(gracz.lvl));
+				if (decyzja == "1" && gracz.lvl >= 1) {
+					enchants.enchantowanie(enchants.enchantowTier1(gracz.lvl));
+					gracz.lvl -= 1;
+					enchants.losowanieEnchant();
+				}
+				if (decyzja == "2" && gracz.lvl >= 2) {
+					enchants.enchantowanie(enchants.enchantowTier2(gracz.lvl));
+					gracz.lvl -= 2;
+					enchants.losowanieEnchant();
+				}
+				if (decyzja == "3" && gracz.lvl >= 3) {
+					enchants.enchantowanie(enchants.enchantowTier3(gracz.lvl));
+					gracz.lvl -= 3;
+					enchants.losowanieEnchant();
+				}
+				if (decyzja == "4") {
+					enchants.enchantClear();
+				}
+			} while (decyzja != "0");
 		}
 		else if (decyzja == "4") {											//"Organizuj ekwipunek"
 			do {
