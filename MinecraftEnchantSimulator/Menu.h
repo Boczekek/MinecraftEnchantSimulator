@@ -40,7 +40,7 @@ std::string menuGlowne() {
 	return decyzja;
 }
 
-std::string menuGry(std::string nazwa, int poziom, int szmaragdy, std::string nazwaBroni, int dmg, int ench) {
+std::string menuGry(std::string nazwa, int poziom, int szmaragdy, std::string nazwaBroni, int dmg) {
 	system("cls");
 	std::string decyzja;
 	std::cout << std::endl;
@@ -50,7 +50,7 @@ std::string menuGry(std::string nazwa, int poziom, int szmaragdy, std::string na
 	std::cout << nazwa << std::endl;
 	std::cout << "Poziom: " << poziom << " | Szmaragdy: " << szmaragdy << std::endl;
 	std::cout << std::endl;
-	std::cout << "Broñ: " << nazwaBroni << " [DMG: " << dmg + ench << "]" << std::endl;
+	std::cout << "Broñ: " << nazwaBroni << " [DMG: " << dmg << "]" << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
@@ -83,7 +83,7 @@ std::string podajNazwe() {
 	return nazwa;
 }
 
-std::string menuExpiarki(std::string nazwaGracza, int poziomGracza, std::string nazwaBroni, int dmg, int ench, int szmaragdy, int expik, int hp, std::string nazwaMobka) {
+std::string menuExpiarki(std::string nazwaGracza, int poziomGracza, std::string nazwaBroni, int dmg, int szmaragdy, int expik, int hp, std::string nazwaMobka) {
 	system("cls");
 	std::string decyzja;
 	int nextLVL = (poziomGracza + 2) * 7 / 2;
@@ -94,7 +94,7 @@ std::string menuExpiarki(std::string nazwaGracza, int poziomGracza, std::string 
 	std::cout << nazwaGracza << std::endl;
 	std::cout << "Poziom: " << poziomGracza << " | XP: " << expik << "/" << nextLVL << " | Szmaragdy: " << szmaragdy << std::endl;
 	std::cout << std::endl;
-	std::cout << "Broñ: " << nazwaBroni << " [DMG: " << dmg + ench << "]" << std::endl;
+	std::cout << "Broñ: " << nazwaBroni << " [DMG: " << dmg << "]" << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
@@ -167,7 +167,7 @@ std::string sklepBronie(std::string nazwaGracza, int poziomGracza, int szmaragdy
 
 std::vector<std::string> listaEkpitunek;
 
-std::string menuEkwipunek(std::string nazwa, int poziom, int szmaragdy, std::string nazwaBroni, int dmg, int ench) {
+std::string menuEkwipunek(std::string nazwa, int poziom, int szmaragdy, std::string nazwaBroni, int dmg) {
 	system("cls");
 	std::string decyzja;
 	std::cout << std::endl;
@@ -177,7 +177,7 @@ std::string menuEkwipunek(std::string nazwa, int poziom, int szmaragdy, std::str
 	std::cout << nazwa << std::endl;
 	std::cout << "Poziom: " << poziom << " | Szmaragdy: " << szmaragdy << std::endl;
 	std::cout << std::endl;
-	std::cout << "Broñ: " << nazwaBroni << " [DMG: " << dmg + ench << "]" << std::endl;
+	std::cout << "Broñ: " << nazwaBroni << " [DMG: " << dmg << "]" << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;

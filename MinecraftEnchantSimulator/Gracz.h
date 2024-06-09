@@ -36,6 +36,26 @@ public:
 		this->waluta += waluta;
 	}
 
+	void zmniejszLVL(int ilosc) {
+		for (int i = 0; i < ilosc; i++) {
+
+			exp -= ((lvl + 2) * 7 / 2);
+
+			if (exp >= (lvl + 2) * 7 / 2) {
+				exp -= ((lvl + 2) * 7 / 2);
+				lvl++;
+			}
+			if (exp < 0) {
+				lvl--;
+				exp = ((lvl + 2) * 7 / 2) - abs(exp);
+			}
+			if (lvl <= 0 && exp < 0) {
+				exp = 0;
+				lvl = 0;
+			}
+		}
+	}
+
 };
 
 class BronGracza {

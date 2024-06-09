@@ -36,10 +36,10 @@ int main() {
 	} while (decyzja == "0");
 
 	do {
-		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage, enchants.dmg);
+		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage);
 		if (decyzja == "1") {												//"Idź do expiarki"
 			do {
-				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, brongracza->nazwa, brongracza->damage, enchants.dmg, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
+				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, brongracza->nazwa, brongracza->damage, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
 				if (decyzja == "1") {
 					enchants.liczenie(mobek.nazwaMobka());
 					mobek.zadanieDmg(brongracza->damage, enchants.dmg);
@@ -135,17 +135,17 @@ int main() {
 				decyzja = menuEnchant(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, enchants.enchantowTier1(gracz.lvl), enchants.enchantowTier2(gracz.lvl), enchants.enchantowTier3(gracz.lvl));
 				if (decyzja == "1" && gracz.lvl >= 1) {
 					enchants.enchantowanie(enchants.enchantowTier1(gracz.lvl));
-					gracz.lvl -= 1;
+					gracz.zmniejszLVL(1);
 					enchants.losowanieEnchant();
 				}
 				if (decyzja == "2" && gracz.lvl >= 2) {
 					enchants.enchantowanie(enchants.enchantowTier2(gracz.lvl));
-					gracz.lvl -= 2;
+					gracz.zmniejszLVL(2);
 					enchants.losowanieEnchant();
 				}
 				if (decyzja == "3" && gracz.lvl >= 3) {
 					enchants.enchantowanie(enchants.enchantowTier3(gracz.lvl));
-					gracz.lvl -= 3;
+					gracz.zmniejszLVL(3);
 					enchants.losowanieEnchant();
 				}
 				if (decyzja == "4") {
@@ -155,7 +155,7 @@ int main() {
 		}
 		else if (decyzja == "4") {											//"Organizuj ekwipunek"
 			do {
-				decyzja = menuEkwipunek(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage, enchants.dmg);
+				decyzja = menuEkwipunek(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage);
 				if (decyzja == "1" && drewnianymiecz.kupiony == true) {
 					brongracza = &drewnianymiecz;
 					
