@@ -42,7 +42,7 @@ int main() {
 				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, brongracza->nazwa, brongracza->damage, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
 				if (decyzja == "1") {
 					enchants.liczenie(mobek.nazwaMobka());
-					mobek.zadanieDmg(enchants.dmg);
+					mobek.zadanieDmg(brongracza->damage, enchants.dmg);
 					if(mobek.getterHp() <= 0) {
 						gracz.addExp(mobek.getterExp());
 						gracz.addWaluta(enchants.looting());
@@ -58,6 +58,7 @@ int main() {
 					do {
 						decyzja = sklepBronie(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
 						if (decyzja == "1" && gracz.waluta >= drewnianymiecz.cena && drewnianymiecz.dostepny == true && drewnianymiecz.kupiony == false) {
+							enchants.enchantClear();
 							drewnianymiecz.kupiony = true;
 							listaBroni[0] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(drewnianymiecz.infoEkwipunek());
@@ -69,6 +70,7 @@ int main() {
 							}
 						}
 						else if (decyzja == "2" && gracz.waluta >= zlotymiecz.cena && zlotymiecz.dostepny == true && zlotymiecz.kupiony == false) {
+							enchants.enchantClear();
 							zlotymiecz.kupiony = true;
 							listaBroni[1] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(zlotymiecz.infoEkwipunek());
@@ -80,6 +82,7 @@ int main() {
 							}
 						}
 						else if (decyzja == "3" && gracz.waluta >= kamiennymiecz.cena && kamiennymiecz.dostepny == true && kamiennymiecz.kupiony == false) {
+							enchants.enchantClear();
 							kamiennymiecz.kupiony = true;
 							listaBroni[2] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(kamiennymiecz.infoEkwipunek());
@@ -91,6 +94,7 @@ int main() {
 							}
 						}
 						else if (decyzja == "4" && gracz.waluta >= zelaznymiecz.cena && zelaznymiecz.dostepny == true && zelaznymiecz.kupiony == false) {
+							enchants.enchantClear();
 							zelaznymiecz.kupiony = true;
 							listaBroni[3] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(zelaznymiecz.infoEkwipunek());
@@ -102,6 +106,7 @@ int main() {
 							}
 						}
 						else if (decyzja == "5" && gracz.waluta >= diamentowymiecz.cena && diamentowymiecz.dostepny == true && diamentowymiecz.kupiony == false) {
+							enchants.enchantClear();
 							diamentowymiecz.kupiony = true;
 							listaBroni[4] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(diamentowymiecz.infoEkwipunek());
@@ -113,6 +118,7 @@ int main() {
 							}
 						}
 						else if (decyzja == "6" && gracz.waluta >= netherytowymiecz.cena && netherytowymiecz.dostepny == true && netherytowymiecz.kupiony == false) {
+							enchants.enchantClear();
 							netherytowymiecz.kupiony = true;
 							listaBroni[5] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(netherytowymiecz.infoEkwipunek());

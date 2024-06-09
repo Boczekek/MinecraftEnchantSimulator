@@ -20,8 +20,8 @@ public:
 	int getterExp(void) {
 		return exp;
 	};
-	void zadanieDmg(int dmg) {				//Dajesz mu dmg a on ci zmienia hp moba
-		int hp = this->hp - dmg;
+	void zadanieDmg(int dmg, int enchant) {				//Dajesz mu dmg a on ci zmienia hp moba
+		int hp = this->hp - (dmg + enchant);
 		setterHp(hp);
 	};
 

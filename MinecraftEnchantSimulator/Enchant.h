@@ -6,9 +6,14 @@
 
 class Enchants {
 public:
-	int dmg = 1;
+	int dmg = 0;
 	int losowo = 0;
 	std::vector<std::string> enchanty;
+
+	Enchants() {
+		std::string pierwszy = "Tak";
+		enchanty.push_back(pierwszy);
+	}
 		
 	void losowanieEnchant(void) {
 
@@ -161,7 +166,7 @@ public:
 	}
 
 	void liczenie(std::string mobek) {
-		dmg = 1;
+		dmg = 0;
 		for (std::string enchant : enchanty) {
 			//---------------------------------------------------------------------------------------------------//
 			// sharpness
