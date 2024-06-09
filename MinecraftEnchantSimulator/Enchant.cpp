@@ -36,10 +36,10 @@ int main() {
 	} while (decyzja == "0");
 
 	do {
-		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage);
+		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage, enchants.dmg);
 		if (decyzja == "1") {												//"Idź do expiarki"
 			do {
-				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, brongracza->nazwa, brongracza->damage, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
+				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, brongracza->nazwa, brongracza->damage, enchants.dmg, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
 				if (decyzja == "1") {
 					enchants.liczenie(mobek.nazwaMobka());
 					mobek.zadanieDmg(brongracza->damage, enchants.dmg);
@@ -155,9 +155,30 @@ int main() {
 		}
 		else if (decyzja == "4") {											//"Organizuj ekwipunek"
 			do {
-				decyzja = menuEkwipunek(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage);
-				if (decyzja == "1") {
-					int i = 1;
+				decyzja = menuEkwipunek(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage, enchants.dmg);
+				if (decyzja == "1" && drewnianymiecz.kupiony == true) {
+					brongracza = &drewnianymiecz;
+					
+				}
+				if (decyzja == "2" && zlotymiecz.kupiony == true) {
+					brongracza = &zlotymiecz;
+
+				}
+				if (decyzja == "3" && kamiennymiecz.kupiony == true) {
+					brongracza = &kamiennymiecz;
+
+				}
+				if (decyzja == "4" && zelaznymiecz.kupiony == true) {
+					brongracza = &zelaznymiecz;
+
+				}
+				if (decyzja == "5" && diamentowymiecz.kupiony == true) {
+					brongracza = &diamentowymiecz;
+
+				}
+				if (decyzja == "6" && netherytowymiecz.kupiony == true) {
+					brongracza = &netherytowymiecz;
+
 				}
 			} while (decyzja != "0");
 		}

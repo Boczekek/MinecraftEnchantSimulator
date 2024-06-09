@@ -44,4 +44,6 @@ public:
 	int damage = 1;
 };
 
+Gracz gracz("Bezimienny");
+
 BronGracza* brongracza = new BronGracza;

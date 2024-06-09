@@ -3,6 +3,7 @@
 #include <string>
 
 #include "Gracz.h"
+#include "Menu.h"
 
 class DrewnianyMiecz : public BronGracza {
 public:
