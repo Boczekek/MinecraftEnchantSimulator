@@ -32,7 +32,7 @@ public:
 		}
 	}
 
-	void addWaluta(int waluta) {			//Metoda dodaj¹ca walutê
+	void addWaluta(int waluta) {			//Metoda dodaj¹ca walutê 
 		this->waluta += waluta;
 	}
 

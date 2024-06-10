@@ -253,3 +253,4 @@ public:
 //		bane of arthropods - od 4 do 5
 //		looting - od 1 do 3
 //		education - od 1 do 3
+//____________________________________________________

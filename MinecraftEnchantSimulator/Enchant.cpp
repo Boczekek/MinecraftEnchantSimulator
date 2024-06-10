@@ -176,5 +176,5 @@ Ekwipunek:
 - Wyświetla posiadane bronie.
 - Możliwość wybrania jednej broni w celu wyświetlenia jej statystyk, wyposażenia jej lub wyrzucenia.
 - Wyświetla ilość posiadanych sprzedawalnych przedmiotów oraz waluty(emeraldów).
-- Fajnie jakby z tymi sprzedawalnymi przedmiotami dało się coś więcej robić bo jak nie to można zrobić tak żeby moby dropiły od razu emeraldy.
+- Fajnie jakby z tymi sprzedawalnymi przedmiotami dało się coś więcej robić bo jak nie to można zrobić tak żeby moby dropiły od razu emeraldy!
 */
