@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <fstream>
 #include <string>
 
 #include "Menu.h"
@@ -7,7 +8,33 @@
 #include "Przedmioty.h"
 #include "Enchant.h"
 
-void wczytajDane() {							//Funkcja wczytująca zapis gry
+void zapiszDane(const std::string& nazwaPliku, int lvl, int exp, int waluta, const std::string& nazwaGracza) {
+	std::ofstream plikWyj(nazwaPliku);
+	if (plikWyj.is_open()) {
+		plikWyj << lvl << std::endl;
+		plikWyj << exp << std::endl;
+		plikWyj << waluta << std::endl;
+		plikWyj << nazwaGracza << std::endl;
+		plikWyj.close();
+	}
+	else {
+		std::cerr << "Nie można otworzyć pliku do zapisu: " << nazwaPliku << std::endl;
+	}
+}
+
+void wczytajDane(const std::string& nazwaPliku, int& lvl, int& exp, int& waluta, std::string& nazwaGracza) {
+	std::ifstream plikWej(nazwaPliku);
+	if (plikWej.is_open()) {
+		plikWej >> lvl;
+		plikWej >> exp;
+		plikWej >> waluta;
+		plikWej.ignore(); // Pominięcie znaku nowej linii po odczytaniu liczbaZmiennoprzecinkowa
+		std::getline(plikWej, nazwaGracza);
+		plikWej.close();
+	}
+	else {
+		std::cerr << "Nie można otworzyć pliku do odczytu: " << nazwaPliku << std::endl;
+	}
 }
 
 int main() {
@@ -26,7 +53,7 @@ int main() {
 			gracz.nazwa_gracza=(podajNazwe());
 		}
 		else if (decyzja == "2") {				//"WCZYTAJ ZAPIS"
-			wczytajDane();
+			wczytajDane("save.save", gracz.lvl, gracz.exp, gracz.waluta, gracz.nazwa_gracza);
 		}
 		else if (decyzja == "3") {				//"WYJŚCIE"
 			return 0;
@@ -195,6 +222,7 @@ int main() {
 			} while (decyzja != "0");
 		}
 		else if (decyzja == "5") {											//"Wróć do menu głównego"
+			zapiszDane("save.save", gracz.lvl, gracz.exp, gracz.waluta, gracz.nazwa_gracza);
 			main();
 		}
 		else {
