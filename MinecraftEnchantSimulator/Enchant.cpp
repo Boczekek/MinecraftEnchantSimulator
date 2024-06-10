@@ -15,7 +15,7 @@ int main() {
 	Enchants enchants;
 	Mobek mobek;
 	Gracz gracz("Bezimienny");
-	mobek.losowyMobek(enchants.education());
+	mobek.losowyMobek(enchants.education(brongracza->nazwa));
 	mobek.hp += (ulepszenia.lvl - 1) * 2;
 	enchants.losowanieEnchant();
 	std::string decyzja;
@@ -42,12 +42,12 @@ int main() {
 			do {
 				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, brongracza->nazwa, brongracza->damage, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
 				if (decyzja == "1") {
-					enchants.liczenie(mobek.nazwaMobka());
+					enchants.liczenie(mobek.nazwaMobka(), brongracza->nazwa);
 					mobek.zadanieDmg(brongracza->damage, enchants.dmg);
 					if(mobek.getterHp() <= 0) {
 						gracz.addExp(mobek.getterExp() + (ulepszenia.lvl - 1) * 2);
-						gracz.addWaluta(enchants.looting() * ulepszenia.mnoznik);
-						mobek.losowyMobek(enchants.education());
+						gracz.addWaluta(enchants.looting(brongracza->nazwa) * ulepszenia.mnoznik);
+						mobek.losowyMobek(enchants.education(brongracza->nazwa));
 						mobek.hp += (ulepszenia.lvl - 1) * 2;
 					}
 				}
@@ -60,7 +60,6 @@ int main() {
 					do {
 						decyzja = sklepBronie(gracz.nazwa_gracza, gracz.lvl, gracz.waluta);
 						if (decyzja == "1" && gracz.waluta >= drewnianymiecz.cena && drewnianymiecz.dostepny == true && drewnianymiecz.kupiony == false) {
-							enchants.enchantClear();
 							drewnianymiecz.kupiony = true;
 							listaBroni[0] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(drewnianymiecz.infoEkwipunek());
@@ -72,7 +71,6 @@ int main() {
 							}
 						}
 						else if (decyzja == "2" && gracz.waluta >= zlotymiecz.cena && zlotymiecz.dostepny == true && zlotymiecz.kupiony == false) {
-							enchants.enchantClear();
 							zlotymiecz.kupiony = true;
 							listaBroni[1] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(zlotymiecz.infoEkwipunek());
@@ -84,7 +82,6 @@ int main() {
 							}
 						}
 						else if (decyzja == "3" && gracz.waluta >= kamiennymiecz.cena && kamiennymiecz.dostepny == true && kamiennymiecz.kupiony == false) {
-							enchants.enchantClear();
 							kamiennymiecz.kupiony = true;
 							listaBroni[2] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(kamiennymiecz.infoEkwipunek());
@@ -96,7 +93,6 @@ int main() {
 							}
 						}
 						else if (decyzja == "4" && gracz.waluta >= zelaznymiecz.cena && zelaznymiecz.dostepny == true && zelaznymiecz.kupiony == false) {
-							enchants.enchantClear();
 							zelaznymiecz.kupiony = true;
 							listaBroni[3] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(zelaznymiecz.infoEkwipunek());
@@ -108,7 +104,6 @@ int main() {
 							}
 						}
 						else if (decyzja == "5" && gracz.waluta >= diamentowymiecz.cena && diamentowymiecz.dostepny == true && diamentowymiecz.kupiony == false) {
-							enchants.enchantClear();
 							diamentowymiecz.kupiony = true;
 							listaBroni[4] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(diamentowymiecz.infoEkwipunek());
@@ -120,7 +115,6 @@ int main() {
 							}
 						}
 						else if (decyzja == "6" && gracz.waluta >= netherytowymiecz.cena && netherytowymiecz.dostepny == true && netherytowymiecz.kupiony == false) {
-							enchants.enchantClear();
 							netherytowymiecz.kupiony = true;
 							listaBroni[5] += "\t[KUPIONY]";
 							listaEkpitunek.push_back(netherytowymiecz.infoEkwipunek());
@@ -152,22 +146,22 @@ int main() {
 			do {															//"Enchantuj broń"
 				decyzja = menuEnchant(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, enchants.enchantowTier1(gracz.lvl), enchants.enchantowTier2(gracz.lvl), enchants.enchantowTier3(gracz.lvl));
 				if (decyzja == "1" && gracz.lvl >= 1) {
-					enchants.enchantowanie(enchants.enchantowTier1(gracz.lvl));
+					enchants.enchantowanie(enchants.enchantowTier1(gracz.lvl), brongracza->nazwa);
 					gracz.zmniejszLVL(1);
 					enchants.losowanieEnchant();
 				}
 				if (decyzja == "2" && gracz.lvl >= 2) {
-					enchants.enchantowanie(enchants.enchantowTier2(gracz.lvl));
+					enchants.enchantowanie(enchants.enchantowTier2(gracz.lvl), brongracza->nazwa);
 					gracz.zmniejszLVL(2);
 					enchants.losowanieEnchant();
 				}
 				if (decyzja == "3" && gracz.lvl >= 3) {
-					enchants.enchantowanie(enchants.enchantowTier3(gracz.lvl));
+					enchants.enchantowanie(enchants.enchantowTier3(gracz.lvl), brongracza->nazwa);
 					gracz.zmniejszLVL(3);
 					enchants.losowanieEnchant();
 				}
 				if (decyzja == "4") {
-					enchants.enchantClear();
+					enchants.enchantClear(brongracza->nazwa);
 				}
 			} while (decyzja != "0");
 		}

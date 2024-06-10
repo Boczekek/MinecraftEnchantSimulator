@@ -9,6 +9,14 @@ public:
 	int dmg = 0;
 	int losowo = 0;
 	std::vector<std::string> enchanty;
+	std::vector<std::string> brakBroni;
+	std::vector<std::string> drewniany;
+	std::vector<std::string> zloty;
+	std::vector<std::string> kamienny;
+	std::vector<std::string> zelazny;
+	std::vector<std::string> diamentowy;
+	std::vector<std::string> netherytowy;
+	std::vector<std::string> enchantStaty;
 
 	Enchants() {
 		std::string pierwszy = "Tak";
@@ -157,17 +165,98 @@ public:
 		}
 	}
 
-	void enchantowanie(std::string enchant) {
+	void enchantowanie(std::string enchant, std::string nazwaBroni) {
+		std::string kopiarka;
 		enchanty.push_back(enchant);
+		if (nazwaBroni == "Drewniany miecz") {
+			kopiarka = enchanty.back();
+			enchanty.pop_back();
+			drewniany.push_back(kopiarka);
+		}
+		else if (nazwaBroni == "Z³oty miecz") {
+			kopiarka = enchanty.back();
+			enchanty.pop_back();
+			zloty.push_back(kopiarka);
+		}
+		else if (nazwaBroni == "Kamienny miecz") {
+			kopiarka = enchanty.back();
+			enchanty.pop_back();
+			kamienny.push_back(kopiarka);
+		}
+		else if (nazwaBroni == "¯elazny miecz") {
+			kopiarka = enchanty.back();
+			enchanty.pop_back();
+			zelazny.push_back(kopiarka);
+		}
+		else if (nazwaBroni == "Diamentowy miecz") {
+			kopiarka = enchanty.back();
+			enchanty.pop_back();
+			diamentowy.push_back(kopiarka);
+		}
+		else if (nazwaBroni == "Netherytowy miecz") {
+			kopiarka = enchanty.back();
+			enchanty.pop_back();
+			netherytowy.push_back(kopiarka);
+		}
+		else {
+			kopiarka = enchanty.back();
+			enchanty.pop_back();
+			brakBroni.push_back(kopiarka);
+		}
 	}
 
-	void enchantClear(void) {
-		enchanty.clear();
+	void enchantClear(std::string nazwaBroni) {
+		if (nazwaBroni == "Drewniany miecz") drewniany.clear();
+		else if (nazwaBroni == "Z³oty miecz") zloty.clear();
+		else if (nazwaBroni == "Kamienny miecz") kamienny.clear();
+		else if (nazwaBroni == "¯elazny miecz") zelazny.clear();
+		else if (nazwaBroni == "Diamentowy miecz") diamentowy.clear();
+		else if (nazwaBroni == "Netherytowy miecz") netherytowy.clear();
+		else { brakBroni.clear(); }
 	}
 
-	void liczenie(std::string mobek) {
+	void kopiarkaEnchantow(std::string nazwaBroni) {
+		if (nazwaBroni == "Drewniany miecz") {
+			for (std::string enchanter : drewniany) {
+				enchantStaty.push_back(enchanter);
+			}
+		}
+		else if (nazwaBroni == "Z³oty miecz") {
+			for (std::string enchanter : zloty) {
+				enchantStaty.push_back(enchanter);
+			}
+		}
+		else if (nazwaBroni == "Kamienny miecz") {
+			for (std::string enchanter : kamienny) {
+				enchantStaty.push_back(enchanter);
+			}
+		}
+		else if (nazwaBroni == "¯elazny miecz") {
+			for (std::string enchanter : zelazny) {
+				enchantStaty.push_back(enchanter);
+			}
+		}
+		else if (nazwaBroni == "Diamentowy miecz") {
+			for (std::string enchanter : diamentowy) {
+				enchantStaty.push_back(enchanter);
+			}
+		}
+		else if (nazwaBroni == "Netherytowy miecz") {
+			for (std::string enchanter : netherytowy) {
+				enchantStaty.push_back(enchanter);
+			}
+		}
+		else {
+			for (std::string enchanter : brakBroni) {
+				enchantStaty.push_back(enchanter);
+			}
+		}
+	}
+
+	void liczenie(std::string mobek, std::string nazwaBroni) {
+		kopiarkaEnchantow(nazwaBroni);
 		dmg = 0;
-		for (std::string enchant : enchanty) {
+		for (std::string enchant : enchantStaty) {
 			//---------------------------------------------------------------------------------------------------//
 			// sharpness
 			if (enchant == "sharpness.I") dmg = dmg + 1;
@@ -204,26 +293,31 @@ public:
 			else if (enchant == "bane of arthropods.IV" && mobek == "Creeper") dmg = dmg + 4;
 			else if (enchant == "bane of arthropods.V" && mobek == "Creeper") dmg = dmg + 5;
 			//---------------------------------------------------------------------------------------------------//
+			enchantStaty.clear();
 		}
 	}
 
-	int education(void) {
+	int education(std::string nazwaBroni) {
+		kopiarkaEnchantow(nazwaBroni);
 		int education = 5;
-		for (std::string enchant : enchanty) {
+		for (std::string enchant : enchantStaty) {
 			if (enchant == "education.I") education += 1;
 			if (enchant == "education.II") education += 2;
 			if (enchant == "education.III") education += 3;
 		}
+		enchantStaty.clear();
 		return education;
 	}
 
-	int looting(void) {
+	int looting(std::string nazwaBroni) {
+		kopiarkaEnchantow(nazwaBroni);
 		int looting = 5;
-		for (std::string enchant : enchanty) {
+		for (std::string enchant : enchantStaty) {
 			if (enchant == "looting.I") looting += 1;
 			if (enchant == "looting.II") looting += 2;
 			if (enchant == "looting.III") looting += 3;
 		}
+		enchantStaty.clear();
 		return looting;
 	}
 };
