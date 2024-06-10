@@ -57,11 +57,11 @@ void wczytajDane(const std::string& nazwaPliku, int& lvl, int& exp, int& waluta,
 
 		plikWej >> rozmiarWektora;
 		plikWej.ignore();
-		ekwipunek.clear();
+		sklep.clear();
 		for (size_t i = 0; i < rozmiarWektora; ++i) {
 			std::string lancuch;
 			std::getline(plikWej, lancuch);
-			ekwipunek.push_back(lancuch);
+			sklep.push_back(lancuch);
 		}
 		plikWej.close();
 	}
@@ -80,7 +80,15 @@ int main() {
 	do {
 		decyzja = menuGlowne();
 		if (decyzja == "1") {					//"NOWA GRA"
-			gracz.nazwa_gracza=(podajNazwe());
+			do {
+				decyzja = nowaGra();
+				if (decyzja == "Y" || decyzja == "y") {
+					gracz.nazwa_gracza = podajNazwe();
+				}
+				else if (decyzja == "N" || decyzja == "n") {
+					decyzja = "0";
+				}
+			} while (decyzja != "N" && decyzja != "n" && decyzja != "Y" && decyzja != "y" && decyzja != "0");
 		}
 		else if (decyzja == "2") {				//"WCZYTAJ ZAPIS"
 			wczytajDane("save.save", gracz.lvl, gracz.exp, gracz.waluta, brongracza->damage, brongracza->nazwa, gracz.nazwa_gracza, ulepszenia.mnoznik, ulepszenia.lvl, listaEkpitunek, listaBroni);
@@ -94,10 +102,10 @@ int main() {
 	} while (decyzja == "0");
 
 	do {
-		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage);
+		decyzja = menuGry(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage, enchants.dmg);
 		if (decyzja == "1") {												//"Idź do expiarki"
 			do {
-				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, brongracza->nazwa, brongracza->damage, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka());
+				decyzja = menuExpiarki(gracz.nazwa_gracza, gracz.lvl, brongracza->nazwa, brongracza->damage, gracz.waluta, gracz.exp, mobek.getterHp(), mobek.nazwaMobka(), enchants.dmg);
 				if (decyzja == "1") {
 					enchants.liczenie(mobek.nazwaMobka(), brongracza->nazwa);
 					mobek.zadanieDmg(brongracza->damage, enchants.dmg);
@@ -224,7 +232,7 @@ int main() {
 		}
 		else if (decyzja == "4") {											//"Organizuj ekwipunek"
 			do {
-				decyzja = menuEkwipunek(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage);
+				decyzja = menuEkwipunek(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, brongracza->nazwa, brongracza->damage, enchants.dmg);
 				if (decyzja == "1" && drewnianymiecz.kupiony == true) {
 					brongracza = &drewnianymiecz;
 					

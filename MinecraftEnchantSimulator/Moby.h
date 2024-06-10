@@ -50,7 +50,7 @@ public:
 		}
 	}
 	std::string nazwaMobka(void) {
-		std::vector<std::string> mobki{ "Zombie","Skeleton","Spider","Creeper" };
+		std::vector<std::string> mobki{ "Zombie","Szkielet","Paj¹k","Creeper" };
 		return mobki[this->losowo];
 	}
 };
