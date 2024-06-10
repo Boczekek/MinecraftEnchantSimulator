@@ -8,32 +8,62 @@
 #include "Przedmioty.h"
 #include "Enchant.h"
 
-void zapiszDane(const std::string& nazwaPliku, int lvl, int exp, int waluta, const std::string& nazwaGracza) {
+void zapiszDane(const std::string& nazwaPliku, int lvl, int exp, int waluta, int damageGracza, const std::string& nazwaBroni, const std::string& nazwaGracza, int mnoznik, int lvlMobkow, const std::vector<std::string>& ekwipunek, const std::vector<std::string>& sklep) {
 	std::ofstream plikWyj(nazwaPliku);
 	if (plikWyj.is_open()) {
 		plikWyj << lvl << std::endl;
 		plikWyj << exp << std::endl;
 		plikWyj << waluta << std::endl;
+		plikWyj << damageGracza << std::endl;
+		plikWyj << mnoznik << std::endl;
+		plikWyj << lvlMobkow << std::endl;
+		plikWyj << nazwaBroni << std::endl;
 		plikWyj << nazwaGracza << std::endl;
+		plikWyj << ekwipunek.size() << std::endl;
+		for (const auto& lancuch : ekwipunek) {
+			plikWyj << lancuch << std::endl;
+		}
+		plikWyj << sklep.size() << std::endl;
+		for (const auto& lancuch : sklep) {
+			plikWyj << lancuch << std::endl;
+		}
 		plikWyj.close();
-	}
-	else {
-		std::cerr << "Nie można otworzyć pliku do zapisu: " << nazwaPliku << std::endl;
 	}
 }
 
-void wczytajDane(const std::string& nazwaPliku, int& lvl, int& exp, int& waluta, std::string& nazwaGracza) {
+void wczytajDane(const std::string& nazwaPliku, int& lvl, int& exp, int& waluta, int& damageGracza, std::string& nazwaBroni, std::string& nazwaGracza, int& mnoznik, int& lvlMobkow, std::vector<std::string>& ekwipunek, std::vector<std::string>& sklep) {
 	std::ifstream plikWej(nazwaPliku);
 	if (plikWej.is_open()) {
 		plikWej >> lvl;
 		plikWej >> exp;
 		plikWej >> waluta;
-		plikWej.ignore(); // Pominięcie znaku nowej linii po odczytaniu liczbaZmiennoprzecinkowa
+		plikWej >> damageGracza;
+		plikWej >> mnoznik;
+		plikWej >> lvlMobkow;
+		plikWej.ignore();
+		std::getline(plikWej, nazwaBroni);
 		std::getline(plikWej, nazwaGracza);
+
+		size_t rozmiarWektora;
+
+		plikWej >> rozmiarWektora;
+		plikWej.ignore();
+		ekwipunek.clear();
+		for (size_t i = 0; i < rozmiarWektora; ++i) {
+			std::string lancuch;
+			std::getline(plikWej, lancuch);
+			ekwipunek.push_back(lancuch);
+		}
+
+		plikWej >> rozmiarWektora;
+		plikWej.ignore();
+		ekwipunek.clear();
+		for (size_t i = 0; i < rozmiarWektora; ++i) {
+			std::string lancuch;
+			std::getline(plikWej, lancuch);
+			ekwipunek.push_back(lancuch);
+		}
 		plikWej.close();
-	}
-	else {
-		std::cerr << "Nie można otworzyć pliku do odczytu: " << nazwaPliku << std::endl;
 	}
 }
 
@@ -53,7 +83,7 @@ int main() {
 			gracz.nazwa_gracza=(podajNazwe());
 		}
 		else if (decyzja == "2") {				//"WCZYTAJ ZAPIS"
-			wczytajDane("save.save", gracz.lvl, gracz.exp, gracz.waluta, gracz.nazwa_gracza);
+			wczytajDane("save.save", gracz.lvl, gracz.exp, gracz.waluta, brongracza->damage, brongracza->nazwa, gracz.nazwa_gracza, ulepszenia.mnoznik, ulepszenia.lvl, listaEkpitunek, listaBroni);
 		}
 		else if (decyzja == "3") {				//"WYJŚCIE"
 			return 0;
@@ -222,7 +252,7 @@ int main() {
 			} while (decyzja != "0");
 		}
 		else if (decyzja == "5") {											//"Wróć do menu głównego"
-			zapiszDane("save.save", gracz.lvl, gracz.exp, gracz.waluta, gracz.nazwa_gracza);
+			zapiszDane("save.save", gracz.lvl, gracz.exp, gracz.waluta, brongracza->damage, brongracza->nazwa, gracz.nazwa_gracza, ulepszenia.mnoznik, ulepszenia.lvl, listaEkpitunek, listaBroni);
 			main();
 		}
 		else {
