@@ -8,6 +8,15 @@
 #include "Przedmioty.h"
 #include "Enchant.h"
 
+class Ulepszenia {
+public:
+	int mnoznik = 1;
+	int lvl = 1;
+	int cenaMnoznik = 50 * (mnoznik * ((mnoznik + 2) / 3));
+	int cenaLvl = 50 * (lvl * ((lvl + 2) / 3));
+};
+
+Ulepszenia ulepszenia;
 
 std::string menuGlowne() {
 	system("cls");
@@ -124,7 +133,6 @@ std::string menuSklepu(std::string nazwaGracza, int poziomGracza, int szmaragdy)
 	std::cout << std::endl;
 	std::cout << "1 - Kup broñ" << std::endl;
 	std::cout << "2 - Kup ulepszenie" << std::endl;
-	std::cout << "3 - Sprzedaj przedmiot" << std::endl;
 	std::cout << "0 - Wyjœcie" << std::endl;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
@@ -155,6 +163,33 @@ std::string sklepBronie(std::string nazwaGracza, int poziomGracza, int szmaragdy
 	for (int i = 0; i != listaBroni.size(); i++)
 	std::cout << i + 1 << " - " << listaBroni[i] << std::endl;
 
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "| 0 - Wyjœcie |" << std::endl;
+	std::cout << std::endl;
+	std::cout << ">";
+	std::cin >> decyzja;
+	return decyzja;
+}
+
+std::string sklepUlepszenia(std::string nazwaGracza, int poziomGracza, int szmaragdy, int poziomPrzeciwnikow, int mnoznik, int cenaLvl, int cenaMnoznik) {
+	system("cls");
+	std::string decyzja;
+	std::cout << std::endl;
+	std::cout << "\t [ SKLEP - ULEPSZENIA ]" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << nazwaGracza << std::endl;
+	std::cout << "Poziom: " << poziomGracza << " | Szmaragdy: " << szmaragdy << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "Ulepszenia:" << std::endl;
+	std::cout << std::endl;
+	std::cout << "1 - Poziom przeciwników (wiêcej XP) [LVL " << poziomPrzeciwnikow << "]" << "\t| Cena: " << cenaLvl << std::endl;
+	std::cout << "2 - Iloœæ otrzymywanych szmaragdów  [LVL " << mnoznik << "]" << "\t| Cena: " << cenaMnoznik << std::endl;
 	std::cout << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << std::endl;

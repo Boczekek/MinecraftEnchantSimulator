@@ -16,6 +16,7 @@ int main() {
 	Mobek mobek;
 	Gracz gracz("Bezimienny");
 	mobek.losowyMobek(enchants.education());
+	mobek.hp += (ulepszenia.lvl - 1) * 2;
 	enchants.losowanieEnchant();
 	std::string decyzja;
 
@@ -27,7 +28,7 @@ int main() {
 		else if (decyzja == "2") {				//"WCZYTAJ ZAPIS"
 			wczytajDane();
 		}
-		else if (decyzja == "3") {				//"WYJŚCIE" sdaadadqaffaf
+		else if (decyzja == "3") {				//"WYJŚCIE"
 			return 0;
 		}
 		else {
@@ -44,9 +45,10 @@ int main() {
 					enchants.liczenie(mobek.nazwaMobka());
 					mobek.zadanieDmg(brongracza->damage, enchants.dmg);
 					if(mobek.getterHp() <= 0) {
-						gracz.addExp(mobek.getterExp());
-						gracz.addWaluta(enchants.looting());
+						gracz.addExp(mobek.getterExp() + (ulepszenia.lvl - 1) * 2);
+						gracz.addWaluta(enchants.looting() * ulepszenia.mnoznik);
 						mobek.losowyMobek(enchants.education());
+						mobek.hp += (ulepszenia.lvl - 1) * 2;
 					}
 				}
 			} while (decyzja != "0");
@@ -124,6 +126,22 @@ int main() {
 							listaEkpitunek.push_back(netherytowymiecz.infoEkwipunek());
 							gracz.addWaluta(-netherytowymiecz.cena);
 							brongracza = &netherytowymiecz;			//dla testu bo nie ma ekwipunku
+						}
+					} while (decyzja != "0");
+					decyzja = "";
+				}
+				if (decyzja == "2") {
+					do {
+						ulepszenia.cenaLvl = 50 * (ulepszenia.lvl * ((ulepszenia.lvl + 2) / 3));
+						ulepszenia.cenaMnoznik = 50 * (ulepszenia.mnoznik * ((ulepszenia.mnoznik + 2) / 3));
+						decyzja = sklepUlepszenia(gracz.nazwa_gracza, gracz.lvl, gracz.waluta, ulepszenia.lvl, ulepszenia.mnoznik, ulepszenia.cenaLvl, ulepszenia.cenaMnoznik);
+						if (decyzja == "1" && gracz.waluta >= ulepszenia.cenaLvl) {
+							ulepszenia.lvl += 1;
+							gracz.addWaluta(-ulepszenia.cenaLvl);
+						}
+						if (decyzja == "2" && gracz.waluta >= ulepszenia.cenaMnoznik) {
+							ulepszenia.mnoznik += 1;
+							gracz.addWaluta(-ulepszenia.cenaMnoznik);
 						}
 					} while (decyzja != "0");
 					decyzja = "";
